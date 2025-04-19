@@ -199,5 +199,6 @@ footer td:nth-child(2) {
 
     footer {
         padding-bottom: 20px;
+        padding-left: 500px;
     }
 }
