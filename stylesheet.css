@@ -114,8 +114,9 @@ main {
     color: white;
 }
 
-.bg-2-grundinfo {    
-    margin-top: 100px;
+.bg-2-grundinfo {   
+    margin-top: 70px;
+    padding-top: 10px;
     padding-left: 10px;
     padding-right: 10px;
     border: 1px dashed white;
