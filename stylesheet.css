@@ -12,30 +12,46 @@ main {
     color: white;
 }
 
-.rainbow-text {
-  background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
-  background-size: 400% 400%;
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  animation: rainbow 5s ease infinite;
-}
-
-@keyframes rainbow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 
 .header-desktop {
     display: none;
 }
+
+/* Grundlagen */
+    .rainbow-text {
+      background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+      background-size: 400% 400%;
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      animation: rainbow 5s ease infinite;
+    }
+
+    @keyframes rainbow {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+/**/    
+
+.horizontale-linie {
+    border: none;
+    height: 1px;
+    background-color: white;
+    margin-bottom: 20px;
+    margin-top: 60px;
+}
+
+
+/* ================
+      Springe-zu
+   ================ */
 
 .springe-zu-container {
     display: flex;
@@ -65,13 +81,10 @@ main {
     color: white;
 }
 
-.horizontale-linie {
-    border: none;
-    height: 1px;
-    background-color: white;
-    margin-bottom: 20px;
-    margin-top: 60px;
-}
+
+/* ================
+        Kopf
+   ================ */
 
 .bg-1 {
     position: fixed;
