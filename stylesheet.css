@@ -48,6 +48,15 @@ main {
     margin-top: 60px;
 }
 
+.anmeldeschluss {
+    height: auto;
+    width: 100%;
+    border: 1px solid white;
+}
+
+.anmeldeschluss-box-dp {
+    display: none;
+}
 
 /* ================
       Springe-zu
@@ -209,21 +218,25 @@ footer td:nth-child(2) {
     .bg-2 img {
         height: 20px; 
         width: auto;
-}
+    }
+
+    .anmeldeschluss {
+        height: auto;
+        width: 20%;
+        border: 1px solid white;
+        margin-left: 10%;
+    }
+
+    .anmeldeschluss-box-dp {
+        display: flex;
+    }
+
+    .anmeldeschluss-box-m {
+        display: none;
+    }
 
     footer {
         padding-bottom: 20px;
         padding-left: 500px;
     }
-}
-
-.anmeldeschluss {
-    height: auto;
-    width: 20%;
-    border: 1px solid white;
-    margin-left: 10%;
-}
-
-.anmeldeschluss-box {
-    display: flex;
 }
