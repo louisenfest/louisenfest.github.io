@@ -216,3 +216,14 @@ footer td:nth-child(2) {
         padding-left: 500px;
     }
 }
+
+.anmeldeschluss {
+    height: auto;
+    width: 20%;
+    border: 1px solid white;
+    margin-left: 10%;
+}
+
+.anmeldeschluss-box {
+    display: flex;
+}
