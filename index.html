@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="de">
- 
 <head>
-        <title>Louisenfest Dresden | Programm & Infos</title>
+        <title>Louisenfest DD</title>
+        <meta name="author" content="&Eacute;mile Jeremias Ruff">        
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/png" href="favicon.ico">
 
         <link rel="stylesheet" href="stylesheet.css" type="text/css">
         <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
 
-        <meta name="description" content="Offizielle Website des Louisenfests Dresden - aktuelles Programm, Teilnahmebedingungen, Highlights, Lageplan und alle Infos rund um das Stadtteilfest in der Neustadt.">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
         <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
         <meta http-equiv="Pragma" content="no-cache">
         <meta http-equiv="Expires" content="0">
 
         <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
         <script src="script.js"></script>
-         
+
 </head>
 <body>
   <div class="bg-1"></div>
@@ -27,44 +26,66 @@
           <div class="bg-2" id="bg2-mobil">
           <p class="nachbarsfest">Das Neustädter Nachbar-<br>schaftsfest</p>
 
+          <div class="main-nav">          
+              <p class="toggleTrigger" data-default-open="false" data-display="block">
+              <img src="b/menu.png" alt="menu">Menü</p>
+              <ul class="toggleContent">
+                  <li><a href="index.html">Homepage</a></li>
+                  <li><a href="t/programm.html">Programm</a></li>
+                  <li><a href="t/teilnahme.html">Teilnahme</a></li>
+                  <li><a href="t/verein.html">Verein</a></li>
+              </ul>
+          </div>
+
           <div class="bg-2-grundinfo">          
-              <table> <tr><td>📌</td>
+              <table> <tr><td><img src="b/karte.png" alt="Karte"></td>
                       <td>Dresden Neustadt</td></tr>
 
-                      <tr><td>🗓️ </td>
+                      <tr><td><img src="b/kalender.png" alt="Kalender"></td>
                           <td>20. bis 21. Juni 2025</td></tr></table>
               <p><b style="padding-left: 75px;">Kontakt</b><br>
-                 <img src="b/logo-insta.png" alt="Logo Instagram">&nbsp; louisenfest_dresden<br>
-                 <img src="b/logo-outlook.png" alt="Logo Outlook">&nbsp; louisenfest@outlook.de</p>
+                 <a href="https://www.instagram.com/louisenfest_dresden/#"><img src="b/logo-insta.png" alt="Logo Instagram">&nbsp; louisenfest_dresden</a><br>
+                 <a href="mailto:louisenfest@outlook.de"><img src="b/logo-outlook.png" alt="Logo Outlook">&nbsp; louisenfest@outlook.de</a></p>
           </div>
         
     </div>
    </header>
 
+    <header class="header-desktop">
+        <div class="bg-2-section">
+            <div class="bg-2" id="bg2-desktop">
 
-  <header class="header-desktop">
-    <div class="bg-2-section">
-          <div class="bg-2" id="bg2-desktop">
+                <div class="main-nav">         
+                    <p class="toggleTrigger" data-default-open="true" data-display="flex">
+                    <img src="b/menu.png" alt="menu">Men&#252;:</p>
+                    <ul class="toggleContent">
+                        <li><img class="krone" src="b/krone.png" alt="Krone"><a href="index.html" style="text-decoration: none;">Homepage</a></li>
+                        <li><a href="t/programm.html">Programm</a></li>
+                        <li><a href="t/teilnahme.html">Teilnahme</a></li>
+                        <li><a href="t/verein.html">Verein</a></li>
+                    </ul>
+                </div>
 
-          <div class="bg-2-grundinfo">          
-              <table><tr><td>📌</td>
-                              <td>Dresden Neustadt</td>
-                              <td><img src="b/logo-insta.png" alt="Logo Instagram"></td>
-                              <td>&nbsp; louisenfest_dresden</td></tr>
+                <div class="bg-2-grundinfo">          
+                      <table><tr><td><img src="b/karte.png" alt="Karte"></td>
+                                 <td>Dresden Neustadt</td>
+                                 <td><img src="b/logo-insta.png" alt="Logo Instagram"></td>
+                                 <td>&nbsp;<a href="https://www.instagram.com/louisenfest_dresden" title="Instagram (Externer Link)">louisenfest_dresden</a></td></tr>
 
-                     <tr><td>🗓️</td>
-                          <td>20. bis 21. Juni 2025</td>
-                          <td><img src="b/logo-outlook.png" alt="Logo Outlook"></td>
-                          <td>&nbsp; louisenfest@outlook.de</td></tr>     
-              </table>
+                             <tr><td><img src="b/kalender.png" alt="Kalender"></td>
+                                 <td>20. bis 21. Juni 2025</td>
+                                 <td><img src="b/logo-outlook.png" alt="Logo Outlook"></td>
+                                 <td>&nbsp;<a href="mailto:louisenfest@outlook.de" title="Mail Dienst (Externer Link)">louisenfest@outlook.de</a></td></tr>     
+                      </table>
+                </div>
+            </div>
         </div>
-    </div>
-  </header>
+    </header>
 
 
   <main>
-    <div class="content-below">
 
+    <div class="content-below">
       <div class="anmeldeschluss-box-dp">
         <div style="max-width: 40%;">
           <p>Liebe Nachbarinnen und Nachbarn, der Sommer kommt und mit ihm das Louisenfest! <br>
@@ -103,16 +124,15 @@
         </div>
       </div>
 
-      <div class="horizontale-linie"></div>
-      <h2 id="gefragt">Gemeinsam gestalten gemeinsam <span onclick="throwConfetti(event)">feiern.</span></h2>
+
+      <h2 id="gefragt">Gemeinsam gestalten - gemeinsam <span onclick="throwConfetti(event)">feiern.</span></h2>
       <p>Das Louisenfest lebt von dem, was ihr draus macht: euren Beiträgen, eurer Kreativität und eurer Lust, etwas auf 
          die Beine zu stellen. Wir laden euch herzlich ein, selbst Teil des Festes zu werden! <br>
          Habt ihr Lust, euch zu verwirklichen?<br>
          Vielleicht spielt ihr Musik, baut Kunstwerke, kocht, bastelt, tanzt, singt, schreibt, zaubert, jongliert - 
-         oder habt einfach eine schöne Idee für einen eigenen Stand?</p>
+         oder habt einfach eine schöne Idee für einen eigenen Stand? <a href="t/teilnahme.html">Hier</a> erfährst du mehr zur Teilnahme.</p>
 
 
-      <div class="horizontale-linie"></div>
       <h2>Zeigt, was in euch steckt!</h2>
       <p>Denn hinter den Fenstern und Türen unserer Straße schlummern Talente, Geschichten und Ideen und genau die wollen 
          wir gemeinsam auf die Straße bringen.
@@ -122,14 +142,13 @@
          haben wir im Anschluss ein kleines Dankeschön von Läden aus der Neustadt.</p>
 
 
-      <div class="horizontale-linie"></div>
       <h2 id="flaeche">Dieses Jahr gibt's mehr Platz für mehr <span class="rainbow-text">Vielfalt:</span></h2>
       <p>Mit einer vergrößerten Veranstaltungsfläche und mehreren Bühnen gibt es viele Möglichkeiten, sich einzubringen - 
          ganz gleich, ob ihr auf der Bühne stehen wollt oder etwas ausstellt, verkauft oder anbietet.</p>
-      <iframe width="100%" height="300px" frameborder="0" allowfullscreen allow="geolocation" src="https://umap.openstreetmap.de/de/map/louisenfest-dd-2025_90337?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true"></iframe><p><a href="//umap.openstreetmap.de/de/map/louisenfest-dd-2025_90337?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true" style="color: white;">Vollbildanzeige</a></p>
+         <iframe class="map" width="100%" frameborder="0" allowfullscreen allow="geolocation" src="https://umap.openstreetmap.de/de/map/louisenfest-dresden-2025_92999?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true&datalayers=41ad50bd-c459-4f3b-aad0-503903fc4fd5&fullscreenControl=null&editinosmControl=false#17/51.06698/13.75604"></iframe>
+         <p><a href="https://umap.openstreetmap.de/de/map/louisenfest-dresden-2025_92999?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true&datalayers=41ad50bd-c459-4f3b-aad0-503903fc4fd5&fullscreenControl=null&editinosmControl=false#17/51.06698/13.75604">Vollbildanzeige</a></p> </div>
+   
 
-
-      <div class="horizontale-linie"></div>
       <h2 id="mitmachen">Mitmachen ist ganz einfach:</h2>
       <p><b>Kommt vorbei</b> und lernt uns kennen-jeden Dienstag um 19 Uhr im Habibi (Martin-Luther-Straße 37). Oder schreibt 
          uns: <br>
@@ -137,8 +156,6 @@
          Instagram: @louisenfest_dresden</b></p>
 
 
-
-      <div class="horizontale-linie"></div>
       <h2 id="verkehr">Wichtig zu wissen:</h2>
       <p>Für das Fest werden einige Straßenabschnitte von Freitag (20.6.) ab 12 Uhr bis Montag (23.6.) um 8 Uhr gesperrt. 
          Die Linie 13 wird in dieser Zeit umgeleitet. Bitte parkt eure Autos rechtzeitig um und nutzt die Gelegenheit, 
@@ -147,15 +164,38 @@
 
     </div>
 
-  <div class="horizontale-linie"></div>
-  <footer>
-        <table> <tr><td><a href="t/kontakt.html">Kontakt</td>
-                    <td>|</td>
-                    <td><a href="t/impressum.html">Impressum</a></td></tr>
-        </table>
-  </footer>
-
   </main>
+
+<!-- Footer -->
+    <form action="https://buttondown.com/api/emails/embed-subscribe/Player33"
+          method="post"
+          class="sub-form">
+      <p>Bleibe immer auf dem neuesten Stand mit unserem kostenlosem Newsletter:</p>   
+      <label for="email">E-Mail-Adresse:</label>
+      <input type="email" name="email" placeholder="you@example.com" />
+      <input type="hidden" value="1" name="embed" />
+      <input type="submit" value="Abonnieren" />
+    </form>
+
+    <div class="horizontale-linie"></div>
+    <footer class="footer-m">
+            <ul><li><a href="t/kontakt.html">Kontakt</a></li>
+                <li>|</li>
+                <li><a href="t/impressum.html">Impressum</a></li>
+            </ul>
+            <p><a href="t/dati.html">AGB&nbsp; & &nbsp;Datenschutz</a></p>        
+    </footer>
+
+    <footer class="footer-dp">
+            <ul><li><a href="t/kontakt.html">Kontakt</a></li>
+                <li>|</li>
+                <li><a href="t/dati.html">AGB&nbsp; & &nbsp;Datenschutz</a></li>
+                <li>|</li>
+                <li><a href="t/impressum.html">Impressum</a></li>
+            </ul>
+    </footer>
+
+
 
 
 </body>

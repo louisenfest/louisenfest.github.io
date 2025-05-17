@@ -10,14 +10,43 @@ main {
     margin-left: 30px;
     margin-right: 30px;
     color: white;
+    word-wrap: break-word;
 }
-
 
 .header-desktop {
     display: none;
 }
 
 /* Grundlagen */
+    a {
+        color: white;
+        text-decoration: underline; 
+        cursor: pointer;
+    }
+
+    .bg-2-grundinfo a, footer a, .band a {
+        text-decoration: none;
+        position: relative;
+        transition: transform 0.4s ease-out;
+    }
+
+    .bg-2-grundinfo a:hover::after, footer a:hover::after, .band a:hover::after {
+        transform: scaleX(1);
+    }
+
+    .bg-2-grundinfo a::after, footer a::after, .band a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: white;
+        transform: scaleX(0);
+        transform-origin: bottom left;
+        transition: transform 0.4s ease-out;
+    }
+
     .rainbow-text {
       background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
       background-size: 400% 400%;
@@ -38,14 +67,50 @@ main {
         background-position: 0% 50%;
       }
     }
-/**/    
 
-.horizontale-linie {
-    border: none;
-    height: 1px;
+    .toggleContent {
+        visibility: hidden;
+    }
+
+    .toggleContent[data-expanded="true"] {
+         visibility: visible;
+    }
+
+    .down-btn {
+        text-decoration: none ;
+        border: 1px solid white;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.3);
+        padding: 10px;
+    }
+
+    .down-btn:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+/**/  
+
+h1 {
+    font-size: 40px;
+    font-family: dm serif display;
+    letter-spacing: 0.05em;
+    margin-top: 10px
+}
+
+h2::before {
+    content: "";
+    display: block;
+    height: 2px;
     background-color: white;
-    margin-bottom: 20px;
-    margin-top: 60px;
+    opacity: 0.8;
+    margin-top: 50px;
+    margin-bottom: 15px;
+    z-index: -1;
+}
+
+.link-before {     /* a in h2:before  */
+    z-index: 50; 
+    position: relative;
 }
 
 .anmeldeschluss {
@@ -58,13 +123,285 @@ main {
     display: none;
 }
 
+.teil-form, .kon-form {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    padding-left: 10px;
+    padding-right: 20px;
+}
+
+.map {
+    border-radius: 10px;
+    border: 1.5px dashed white;
+    height: 300px;
+}
+
+.toggle-png {
+    width: 15px;
+    height: auto;
+    margin-bottom: 3px;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+#buehnen {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.horizontale-linie {
+    border: none;
+    max-width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 1px;
+    background-color: white;
+    margin-top: 30px;
+}
+
+/* Dati */
+    .dati-h1-dp, .dati-start-2 {
+        display: none;
+    }
+
+    .dati-start {
+        display: flex;
+    }
+
+    .dati-start-2 {
+        margin-top: 12%;
+        margin-left: -5%;
+        height: 10%;
+        padding: 2%;
+        padding-bottom: 3.5%;
+
+        border-radius: 10px;
+        border-left: 1px dashed white;
+        border-top: 1px dashed white;
+        border-bottom: 1px dashed white;
+    }
+
+    .dati-start-2 span:nth-of-type(1), .dati-start-3 span:nth-of-type(1) {
+        font-size: 35px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .dati-start-2 span:nth-of-type(2) {
+        font-size: 15px;
+        margin: 0;
+        margin-top: 4%;
+        margin-bottom: 10%;
+        padding: 0;
+        font-weight: bold;
+    }
+
+    .dati-start-3 div {
+        margin-top: 14%;
+        padding-bottom: 10% !important;
+        padding-top: 20px !important;
+        padding: 0;
+        font-weight: bold;
+        border-top: 1px solid white;
+    }
+
+/**/
+
+.footer-dp {
+    display: none;
+}
+
+.footer-m p {
+    margin-top: 1%;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    color: white;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.sub-form {
+    background-color: transparent;
+    margin: 0 auto;
+    border-top: 1px solid white;
+    max-width: 90%;
+    text-align: center;  
+    color: white;  
+    margin-top: 80px;
+    display: none;
+}
+
+.sub-form input:nth-of-type(3) {
+    border: 1px solid white;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    margin-top: 10px;
+}
+
+.sub-form input:nth-of-type(3):hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sub-form input:nth-of-type(3):focus {
+    border: 1px dashed white;
+}
+
+.krone-impressum, .krone-kontakt {
+    display: none;
+}    
+
+/* ================
+       Programm
+   ================ */
+section h2 {
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+
+section h2::before {
+    display: none;
+}
+
+section h2::after {
+    content: "";
+    display: block;
+    height: 2px;
+    background-color: white;
+    opacity: 0.8;
+    margin-bottom: 0px;
+    width: 80%;
+}
+
+.act {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20%;
+    margin-bottom: 10px;
+    font-size: 17px;
+}
+
+.act .time {
+    white-space: nowrap;
+    flex-shrink: 0;
+    width: 100px;
+    font-family: Space Mono;
+}
+
+.act .band {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.hidden-time .act .time {
+    display: none;
+}
+
+.extra-time {
+    font-weight: normal;
+    font-style: italic;
+    font-size: 15px;
+    font-family: Lora;
+    padding-left: 10px;
+}
+
+.programm h3 {
+    font-weight: normal;
+    font-style: italic;
+    border: 1px dashed white;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    width: 80%;
+    text-align: center;
+    padding: 5px;
+    margin-top: 12%;
+}
+
+#next-five-events .act {
+    display: flex;
+    justify-content: flex-start;
+    gap: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+#next-five-events .time,
+#next-five-events .stage,
+#next-five-events .band {
+    flex: none;
+}
+
+#next-five-events .stage,
+#next-five-events .band {
+    border-left: 1px dashed white;
+    padding-left: 10px;
+}
+
+#next-five-events .time {
+    max-width: 15%;
+}
+
+
+/* ================
+       main-nav
+   ================ */
+.main-nav {
+    font-size: 28px;
+}
+
+.main-nav p {
+    font-size: 20px;
+}
+
+.main-nav ul {
+    border-left: 1px solid white;
+    padding-left: 15px;
+    margin-left: 20px;
+    margin-top: -15px;
+    list-style: none;
+    font-size: 20px;
+}
+
+.main-nav li {
+    padding: 2px;
+}
+
+.main-nav img {
+    width: 15px;
+    height: auto;
+    margin-right: 10px;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+
 /* ================
       Springe-zu
    ================ */
-
 .springe-zu-container {
     display: flex;
-   align-items: baseline;
+    align-items: baseline;
 }
 
 .springe-zu-container p {
@@ -86,15 +423,60 @@ main {
     margin: 0px 0;
 }
 
-.springe-zu a {
+
+/* ================
+         Kopf
+   ================ */
+.bg-2-section-reg {
+    position: relative;
+    z-index: 2;
+}
+
+.bg-2-reg {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-image: url('b/bg-2-dp.png');
+    background-repeat: no-repeat;
+    background-size: 525px;
+    background-position: left -20px top -30px;
+    opacity: 1;
+    transition: opacity 0.1s ease-out;
+}
+
+.bg-2-reg {
     color: white;
+    position: relative;
+    z-index: 10;
+    height: 250px;
+}
+
+.bg-2-reg img {
+    height: 14px; 
+    width: auto;
+    margin-right: 7px;
+    margin-left: 0px;    
+}
+
+.bg-2-reg .toggleTrigger {
+    margin-top: 173px;
+    margin-left: 135px;
+    z-index: 10;
 }
 
 
-/* ================
-        Kopf
-   ================ */
+.bg-2-reg .main-nav ul {
+    border-left: 1px solid lightgrey;
+    padding-left: 12px;
+    margin-left: 265px;
+    margin-top: -45px;
+    font-size: 17px;
+}
 
+/* ================
+    Kopf Homepage
+   ================ */
 .bg-1 {
     position: fixed;
     top: 0;
@@ -114,7 +496,7 @@ main {
 }
 
 .nachbarsfest {
-    padding-top: 70px;
+    padding-top: 5px;
     font-size: 40px;
 }
 
@@ -125,7 +507,7 @@ main {
     background-image: url('b/bg-2.png');
     background-repeat: no-repeat;
     background-size: contain;
-    background-position: right 5px bottom 40px;
+    background-position: right 5px bottom 110px;
     height: 100vh;
     opacity: 1;
     transition: opacity 0.1s ease-out;
@@ -137,7 +519,7 @@ main {
 }
 
 .bg-2-grundinfo {   
-    margin-top: 70px;
+    margin-top: 20px;
     padding-top: 10px;
     padding-left: 10px;
     padding-right: 10px;
@@ -157,34 +539,17 @@ main {
     width: auto;
 }
 
-footer {
-    padding-left: 70px; 
-    padding-bottom: 20px;
-}
-
-footer a {
-    color: white;
-    text-decoration: none;
-}
-
-footer td:nth-child(2) {
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
 
 /* ================
        Desktop
    ================ */
 @media (min-width: 768px) {
-    .bg-1 {
-        background-image: url('b/bg-1-dp.png');
+    body {
+        overflow-x: hidden;
     }
 
-    .bg-2 {
-        background-image: url('b/bg-2-dp.png');
-        background-position: right 5px bottom 100px;
-
+    .bg-1 {
+        background-image: url('b/bg-1-dp.png');
     }
 
     .header-desktop {
@@ -195,29 +560,38 @@ footer td:nth-child(2) {
         display: none;
     }
 
-    .bg-2-grundinfo {
-        display: inline-flex;
-        margin-left: 45%;
-        margin-top: 200px;
+    main {
         max-width: 80%;
-        background-color: rgba(255, 255, 255, 0.15);
-        padding: 20px;
-        font-size: 17px;
-        font-weight: bold;
+        margin-left: 10%;
     }
 
-    .bg-2 td {
-        color: white;
-        font-size: 17px;
+    main #reg {
+        position: relative;
+        margin-top: -580px;
+        margin-left: 305px;
+        padding-left: 25px;
+        padding-top: 5px;
+        width: calc(100% - 250px - 2rem);
+        box-sizing: border-box;
+        z-index: 5;
     }
 
-    .bg-2 td:nth-of-type(3) {
-        padding-left: 50px;
+    .content-below #reg {
+        height: 1000px;
     }
 
-    .bg-2 img {
-        height: 20px; 
-        width: auto;
+    main #reg::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 450px;
+        height: 300px;
+        border-top: 1px solid rgba(255, 255, 255, 0.8);
+        border-left: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 10px;
+        box-sizing: border-box;
+        z-index: -1;
     }
 
     .anmeldeschluss {
@@ -235,8 +609,279 @@ footer td:nth-child(2) {
         display: none;
     }
 
-    footer {
-        padding-bottom: 20px;
-        padding-left: 500px;
+    .toggleTrigger {
+        cursor: pointer;
+    }
+
+    .map {
+        height: 600px;
+    }
+
+    .bg-2-grundinfo table tr:nth-of-type(1) td:nth-of-type(3), 
+    .bg-2-grundinfo table tr:nth-of-type(2) td:nth-of-type(3) {
+        max-width: 18px;
+    }
+
+/* Programm */
+    .programm h3 {
+        margin-top: -5%;
+    }
+
+    .day-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 30%));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .day-block {
+        padding: 1rem;
+    }
+
+    #mondpalast-section h3, #a-park-section h3, #next-five-section h3 {
+        margin-top: -5%;
+    }
+
+
+    #next-five-events .act {
+        gap: 5rem;
+    }
+
+    #next-five-events .time {
+        max-width: 5%;
+    }
+/**/
+
+    .dati-h1-m, .dati-start-3 {
+        display: none;
+    }
+
+    .dati-h1-dp, .dati-start-2 {
+        display: block;
+    }
+
+    .horizontale-linie {
+        margin-top: 80px;
+    }
+
+    .footer-dp {
+        display: block;
+    }
+
+    .footer-m {
+        display: none;
+    }
+
+    .sub-form {
+        margin-top: 300px;
+        max-width: 30%;
+    }
+
+    .sub-form input:nth-of-type(3) {
+        margin-top: 0px;
+    }
+    
+
+/* Header */
+    .bg-2-section-reg .bg-2 {
+        background-image: url('b/bg-2.png');
+        background-position: left -40px bottom 100px;
+    }
+
+    .bg-2-section-reg td {
+        color: white;
+        font-size: 17.5px;
+    }
+
+    .bg-2-section-reg td:nth-of-type(3) {
+        padding-left: 50px;
+    }
+
+    .bg-2-section-reg img {
+        height: 20px; 
+        width: auto;
+    }
+
+    .bg-2-section-reg .main-nav p {
+        padding-bottom: 10px;
+    }    
+
+/**/    
+    .bg-2-section-reg .bg-2 .main-nav {
+        padding-top: 180px;
+        margin-left: 455px;
+        display: inline-flex;
+        font-size: 17.5px;
+    }
+
+    .bg-2-section-reg .bg-2-grundinfo {
+        display: inline-flex;
+        margin-left: 455px;
+        margin-top: -10px;
+        max-width: calc(100% - 250px - 2rem);
+        background-color: rgba(255, 255, 255, 0.15);
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .bg-2 .main-nav ul {
+        display: flex;
+        flex-direction: row;
+        margin-left: 20px;
+        margin-top: 10px; 
+        margin-bottom: 0px;
+        border-left: 0px solid lightgrey;   
+        text-decoration: underline;     
+    }
+
+    .bg-2-section-reg .bg-2-grundinfo table {
+        width: 600px;
+    }
+
+    .bg-2 .main-nav p {
+        margin-bottom: 0px;
+    }
+
+    .bg-2 .main-nav li {
+        padding: 8px;
+        margin-right: 20px;
+        cursor: pointer;
+    }
+
+    .bg-2 .main-nav img {
+        width: 15px;
+        height: auto;
+        margin-right: 10px;
+        margin-left: 10px;
+        display: inline-block;
+    }
+
+/* Header Homepage */
+    .bg-2-section .bg-2 {
+        background-image: url('b/bg-2-dp.png');
+        background-position: right 5px bottom 100px;
+    }
+
+    .bg-2-section .bg-2-grundinfo {
+        display: inline-flex;
+        margin-left: 45%;
+        margin-top: 0px;
+        max-width: 80%;
+        background-color: rgba(255, 255, 255, 0.15);
+        padding: 10px;
+    }
+
+    .bg-2-section .bg-2-grundinfo table {
+        width: 600px;
+    }
+
+    .bg-2 td {
+        font-size: 17.5px;
+    }
+
+    .bg-2 td:nth-of-type(3) {
+        padding-left: 50px;
+    }
+
+    .bg-2 img {
+        height: 20px; 
+        width: auto;
+    }
+
+    /**/
+    .bg-2-grundinfo img {
+        height: 30px; 
+        width: auto;
+        background-color: transparent;
+    }    
+
+    .bg-2-grundinfo td:nth-of-type(1) {
+        text-align: right;
+        padding-right: 10px;
+    }
+
+    /**/
+    .bg-2-section .bg-2 .main-nav {
+        margin-top: 300px;
+        margin-left: 45%;
+        display: inline-flex;
+        font-size: 17.5px;
+    }
+
+    .bg-2 .main-nav ul {
+        display: flex;
+        flex-direction: row;
+        margin-left: 20px;
+        margin-top: 10px; 
+        margin-bottom: 0px;
+        border-left: 0px solid lightgrey;   
+        text-decoration: underline;     
+    }
+
+    .bg-2 .main-nav p {
+        margin-bottom: 10px;
+    }
+
+    .bg-2 .main-nav li {
+        padding: 8px;
+        cursor: pointer;
+    }
+
+    .bg-2 .main-nav img {
+        width: 15px;
+        height: auto;
+        margin-right: 10px;
+        margin-left: 10px;
+        display: inline-block;
+    }
+
+    .main-nav ul li, footer ul li {
+        position: relative;
+    }
+
+    .krone, .krone-verein, .krone-impressum, .krone-kontakt {
+        position: absolute;
+        top: -13px;
+        left: 30%;
+        height: 20px !important;
+        width: auto !important;
+        z-index: 10;
+        opacity: 0.5;
+    }
+
+    .krone-verein {
+        left: 20%;
+    }
+
+    .krone-kontakt {
+        top: -5%;
+        left: -55%;
+        display: block;
+    }    
+
+    .krone-impressum {
+        top: -5%;
+        left: 115%;
+        display: block;
+    }     
+}
+
+
+/* ================
+        Laptop
+   ================ */
+@media (min-width: 1024px) and (max-width: 1439px) {
+    main #reg {
+        margin-top: -380px;
+        margin-left: 355px;
+    }
+
+    .bg-2-section .bg-2 .main-nav {
+        margin-top: 250px;
+        margin-left: 40%;
+    }
+
+    .bg-2-section .bg-2-grundinfo {
+        margin-left: 40%;
     }
 }
