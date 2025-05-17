@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Band Liste</title>
+
+
+<!-- Firebase SDK (modular) laden -->
+<script type="module">
+  // Importiere die benötigten Funktionen aus den SDKs
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+  import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+
+  // Deine Firebase-Konfiguration
+  const firebaseConfig = {
+    apiKey: "AIzaSyBnEnZrko6pqy5Q5ZAYlo3iW30hc1F_oV8",
+    authDomain: "programm-louisenfest.firebaseapp.com",
+    projectId: "programm-louisenfest",
+    storageBucket: "programm-louisenfest.firebasestorage.app",
+    messagingSenderId: "385737458779",
+    appId: "1:385737458779:web:f80e7317d6eb94f446ab7e"
+  };
+
+  // Firebase initialisieren
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Beispiel, um Daten aus einer Collection zu holen
+  const actsRef = collection(db, "acts");
+  const querySnapshot = await getDocs(actsRef);
+  querySnapshot.forEach(doc => {
+    console.log(doc.id, " => ", doc.data());
+  });
+</script>
+
+</head>
+<body>
+  <h1>Festival Line-Up</h1>
+  <ul id="band-list"></ul>
+</body>
+</html>
