@@ -91,13 +91,24 @@
                 <div class="toggleContent" id="grubers"></div>
             </section>
 
-
-            <section id="little-creatures" class="hidden-time">
+            <section id="little-creatures-section" class="hidden-time">
                 <h2 class="toggleTrigger" data-default-open="false" data-display="block">Little-Creatures-Bühne <span class="extra-time">ab 19 Uhr</span>
                 <img class="toggle-png" src="../b/toggle-up.png" alt="Bild"></h2>
                 <div class="toggleContent" id="creatures"></div>
             </section>
             
+            <section id="roh-section">
+                <h2 class="toggleTrigger" data-default-open="false" data-display="block">Roh-Bühne
+                <img class="toggle-png" src="../b/toggle-up.png" alt="Bild"></h2>
+                <div class="toggleContent" id="roh"></div>
+            </section>
+
+            <section id="el-cubanito-section">
+                <h2 class="toggleTrigger" data-default-open="false" data-display="block">El-Cubanito-Bühne
+                <img class="toggle-png" src="../b/toggle-up.png" alt="Bild"></h2>
+                <div class="toggleContent" id="el-cubanito"></div>
+            </section>
+
             <section id="next-five-section" class="hidden-time">
                 <h2 class="toggleTrigger" data-default-open="false" data-display="block">Nächste 5 Acts 
                 <img class="toggle-png" src="../b/toggle-up.png" alt="Bild"></h2>
@@ -156,7 +167,7 @@
 
     function formatTime(ts) {
         const date = typeof ts.toDate === 'function' ? ts.toDate() : new Date(ts);
-        return date.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
+        return date.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });    
     }
 
     function formatDate(ts) {
@@ -236,7 +247,7 @@
     }
 
     async function loadNextFiveEvents() {
-        const stages = ["a-park", "mondpalast", "grubers", "little-creatures"];
+        const stages = ["a-park", "mondpalast", "grubers", "little-creatures", "roh", "el-cubanito"];
         let events = [];
 
         for (const stage of stages) {
@@ -303,6 +314,8 @@
     loadStage("mondpalast", "mondpalast");
     loadStage("grubers", "grubers");
     loadStage("creatures", "little-creatures");
+    loadStage("el-cubanito", "el-cubanito");
+    loadStage("roh", "roh");
     loadNextFiveEvents();
     </script>
 
