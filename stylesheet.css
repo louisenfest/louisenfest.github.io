@@ -113,7 +113,7 @@ h2::before {
     position: relative;
 }
 
-.anmeldeschluss {
+.anmeldeschluss, .parkverbot {
     height: auto;
     width: 100%;
     border: 1px solid white;
@@ -247,6 +247,7 @@ footer a {
     text-align: center;  
     color: white;  
     margin-top: 80px;
+    display: none;
 }
 
 .sub-form input:nth-of-type(3) {
@@ -594,7 +595,7 @@ section h2::after {
         z-index: -1;
     }
 
-    .anmeldeschluss {
+    .anmeldeschluss, .parkverbot {
         height: auto;
         width: 20%;
         border: 1px solid white;
