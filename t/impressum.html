@@ -213,9 +213,8 @@
       <button onclick="triggerChaos()">🚫</button>
     </div>
         
-    <div class="arrow" style="margin-left: -10px;">↑</div>
+    <div id="arrow" class="arrow" style="margin-left: -10px; display:block;">↑</div>
       <p id="reparieren">Reparieren</p>
-    </div>
 
   </div>
   </main>
@@ -324,6 +323,7 @@
       alert("Oops! We broke the matrix. Someone not call Neo!");
       document.getElementById("repair-btn").style.display = "inline-block";
       document.getElementById("reparieren").style.display = "block";
+      document.getElementById("arrow").style.display = "block";
     }, 1000);
   }
 
@@ -346,6 +346,7 @@
       document.getElementById("quiz-overlay").style.display = "none";
       document.getElementById("repair-btn").style.display = "none";
       document.getElementById("reparieren").style.display = "none";
+      document.getElementById("arrow").style.display = "none";
       specialModeActive = false;
       localStorage.removeItem("chaos");
     } else {
