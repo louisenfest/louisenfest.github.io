@@ -19,6 +19,116 @@
         <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
         <script src="../script.js"></script>
          
+        <style>
+            .rotated {
+              animation: rotate361 1s linear forwards;
+              overflow-y: auto !important;
+            }
+
+            @keyframes rotate361 {
+              from { transform: rotate(0deg); }
+              to { transform: rotate(361deg); }
+            }
+            
+            @keyframes bounce {
+              0%, 100% { transform: translateY(-10px); }
+              50% { transform: translateY(0); }
+            }
+
+            .useless-darkmode * {
+              background-color: #111 !important;
+              color: #fffff !important;
+              background-image: none !important;
+              z-index: 1;
+            }
+
+            .cat {
+              position: fixed;
+              font-size: 2rem;
+              animation-name: floatDown;
+              animation-timing-function: ease-in;
+              animation-fill-mode: forwards;
+              left: calc(10% + 80% * var(--x));
+              top: -2rem;
+              pointer-events: none;
+              user-select: none;
+              z-index: 100000;
+            }
+
+            @keyframes floatDown {
+              to {
+                top: 110%;
+                opacity: 0;
+              }
+            }
+
+            #quiz-overlay {
+              display: none;
+              position: fixed;
+              top: 0; left: 0;
+              width: 100%; height: 100%;
+              background: rgba(0, 0, 0, 0.6);
+              z-index: 100001;
+            }
+
+            #quiz-modal {
+              display: none;
+              position: fixed;
+              top: 50%; left: 50%;
+              transform: translate(-50%, -50%);
+              background: #fff;
+              padding: 2rem;
+              border-radius: 10px;
+              z-index: 100002;
+              max-width: 90vw;
+              text-align: center;
+            }
+            
+            #fun-buttons {
+                display: flex;
+                gap: 10px;
+            }
+
+            button {
+              background-color: rgba(255, 255, 255, 0.2);
+              color: white;
+            }
+            
+            button:hover {
+              background-color: rgba(255, 255, 255, 0.1);
+            }
+            
+            .arrow {
+              text-align: center;
+              font-size: 40px;
+              color: #ffffff;
+              animation: bounce 1.5s infinite;
+              padding: 1rem 0;
+              padding-left: 167px;
+              text-align: left;
+            }
+            
+            #nicht-druecken {
+                margin-left: 110px; 
+                margin-top: -15px;
+                display:block;
+            }
+            
+            #reparieren {
+                margin-left: 110px; 
+                margin-top: -25px;
+                display:none;
+            }
+
+            @media (min-width: 768px) {
+                .arrow {
+                  margin
+                }
+
+            }
+        </style>
+  
+         
 </head>
 <body>
   <div class="bg-1"></div>
@@ -88,16 +198,30 @@
     <p>Wir behalten uns alle Rechte vor. <br> Die Inhalte dieser Website, einschließlich Texte, 
        Bilder und Grafiken, sind urheberrechtlich geschützt. Jegliche Nutzung, Reproduktion oder 
        Verbreitung der Inhalte ohne ausdrückliche Genehmigung des Urhebers ist untersagt. <br>
-       Für den Inhalt externer Links übernehmen wir keine Verantwortung. Für die Inhalte der 
+       Für den Inhalt externer Links übernehmen wir keine Veantwortung. Für die Inhalte der 
        verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
 
     <p>-<br>
        Sieht gut aus? War Absicht. <br>~&Eacute;mile Jeremias Ruff. <span onclick="throwConfetti(event)" 
        style="cursor: pointer;"><u>[Konfetti]</u></span></p>  
 
+    <div id="fun-buttons">
+      <button onclick="toggleCatRain()">🐱</button>
+      <button onclick="toggleMoreCatRain()">🐱🐱</button>
+      <button onclick="toggleDarkMode()">🌙</button>
+      <button id="repair-btn" style="display:none;" onclick="showQuiz()">🔧</button>
+      <button onclick="triggerChaos()">🚫</button>
+    </div>
+        
+    <div class="arrow" style="margin-left: -10px;">↑</div>
+      <p id="nicht-druecken">Nicht drücken</p>
+      <p id="reparieren">Reparieren</p>
+    </div>
 
   </div>
   </main>
+
+
 
 <!-- Footer -->
     <form action="https://buttondown.com/api/emails/embed-subscribe/Player33             "
@@ -127,6 +251,132 @@
                 <li><img class="krone-impressum" src="../b/krone.png" alt="Krone"><a href="impressum.html">Impressum</a></li>
             </ul>
     </footer>
+
+
+  <!-- Quiz Modal -->
+  <div id="quiz-overlay"></div>
+  <div id="quiz-modal">
+    <h3>Reparaturmodus</h3>
+    <p id="quiz-question"></p>
+    <input type="text" id="quiz-answer" placeholder="Antwort eingeben"><br><br>
+    <button onclick="checkQuizAnswer()" style="color: black;">Antwort prüfen</button>
+  </div>
+
+<script>
+  let quizData = [
+    { frage: "Was ist der Standardport für HTTPS?", antwort: "443" },
+    { frage: "Welche Programmiersprache läuft direkt im Browser?", antwort: "JavaScript" },
+    { frage: "Welche Programmiersprache verwendet Schlüsselwörter wie „def“ und „lambda“?", antwort: "Python" },
+    { frage: "Wie heißt das Versionsverwaltungssystem mit dem Befehl „git commit“?", antwort: "Git" },
+    { frage: "Welche Zahl stellt die IPv4-Maske 255.255.255.0 in CIDR-Notation dar?", antwort: "/24" },
+    { frage: "Welche Sprache wird hauptsächlich für das Styling von Webseiten verwendet (Abkürzung)?", antwort: "CSS" }
+  ];
+
+  let quizIndex = 0;
+  let catRainInterval;
+  let specialModeActive = false;
+
+  function toggleDarkMode() {
+    document.body.classList.toggle("useless-darkmode");
+  }
+
+  function toggleCatRain(amount = 50, delay = 50) {
+    let count = 0;
+    catRainInterval = setInterval(() => {
+      if (count >= amount) {
+        clearInterval(catRainInterval);
+        return;
+      }
+      const cat = document.createElement("div");
+      cat.className = "cat";
+      cat.style.setProperty('--x', Math.random());
+      cat.style.animationDuration = (2 + Math.random() * 2) + "s";
+      cat.textContent = Math.random() < 0.5 ? "🐱" : "😺";
+      document.body.appendChild(cat);
+      setTimeout(() => cat.remove(), 4000);
+      count++;
+    }, delay);
+  }
+
+  function toggleMoreCatRain(amount = 3000, delay = 10) {
+    let count = 0;
+    catRainInterval = setInterval(() => {
+      if (count >= amount) {
+        clearInterval(catRainInterval);
+        return;
+      }
+      const cat = document.createElement("div");
+      cat.className = "cat";
+      cat.style.setProperty('--x', Math.random());
+      cat.style.animationDuration = (2 + Math.random() * 2) + "s";
+      cat.textContent = Math.random() < 0.5 ? "🐱" : "😺";
+      document.body.appendChild(cat);
+      setTimeout(() => cat.remove(), 4000);
+      count++;
+    }, delay);
+  }
+
+  function triggerChaos() {
+    if (specialModeActive) return;
+    specialModeActive = true;
+    localStorage.setItem("chaos", "true");
+    document.body.classList.add("rotated");
+    setTimeout(() => {
+      alert("Oops! We broke the matrix. Someone not call Neo!");
+      document.getElementById("repair-btn").style.display = "inline-block";
+      document.getElementById("nicht-druecken").style.display = "none";
+      document.getElementById("reparieren").style.display = "block";
+    }, 1000);
+  }
+
+  function showQuiz() {
+    const randomIndex = Math.floor(Math.random() * quizData.length);
+    quizIndex = randomIndex;
+    document.getElementById("quiz-question").textContent = quizData[quizIndex].frage;
+    document.getElementById("quiz-answer").value = "";
+    document.getElementById("quiz-modal").style.display = "block";
+    document.getElementById("quiz-overlay").style.display = "block";
+  }
+
+  function checkQuizAnswer() {
+    const input = document.getElementById("quiz-answer").value.trim().toLowerCase();
+    const correct = quizData[quizIndex].antwort.toLowerCase();
+    if (input === correct) {
+      alert("Systemzustand wiederhergestellt.");
+      document.body.classList.remove("rotated");
+      document.getElementById("quiz-modal").style.display = "none";
+      document.getElementById("quiz-overlay").style.display = "none";
+      document.getElementById("repair-btn").style.display = "none";
+      document.getElementById("nicht-druecken").style.display = "block";
+      document.getElementById("reparieren").style.display = "none";
+      specialModeActive = false;
+      localStorage.removeItem("chaos");
+    } else {
+      alert("Leider falsch. Versuch's nochmal!");
+    }
+  }
+
+  function throwConfetti(event) {
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: {
+        x: event.clientX / window.innerWidth,
+        y: event.clientY / window.innerHeight
+      }
+    });
+  }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    if (localStorage.getItem("chaos") === "true") {
+      document.body.classList.add("rotated");
+      specialModeActive = true;
+      document.getElementById("repair-btn").style.display = "inline-block";
+      document.getElementById("nicht-druecken").style.display = "none";
+      document.getElementById("reparieren").style.display = "block";
+    }
+  });
+</script>
 
 </body>
 </html>
