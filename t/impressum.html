@@ -214,7 +214,6 @@
     </div>
         
     <div class="arrow" style="margin-left: -10px;">↑</div>
-      <p id="nicht-druecken">Nicht drücken</p>
       <p id="reparieren">Reparieren</p>
     </div>
 
@@ -324,7 +323,6 @@
     setTimeout(() => {
       alert("Oops! We broke the matrix. Someone not call Neo!");
       document.getElementById("repair-btn").style.display = "inline-block";
-      document.getElementById("nicht-druecken").style.display = "none";
       document.getElementById("reparieren").style.display = "block";
     }, 1000);
   }
@@ -347,7 +345,6 @@
       document.getElementById("quiz-modal").style.display = "none";
       document.getElementById("quiz-overlay").style.display = "none";
       document.getElementById("repair-btn").style.display = "none";
-      document.getElementById("nicht-druecken").style.display = "block";
       document.getElementById("reparieren").style.display = "none";
       specialModeActive = false;
       localStorage.removeItem("chaos");
