@@ -595,7 +595,7 @@ section h2::after {
         z-index: -1;
     }
 
-    .anmeldeschluss {
+    .anmeldeschluss, .parkverbot {
         height: auto;
         width: 20%;
         border: 1px solid white;
