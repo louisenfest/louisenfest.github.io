@@ -113,7 +113,7 @@ h2::before {
     position: relative;
 }
 
-.anmeldeschluss, .parkverbot {
+.anmeldeschluss {
     height: auto;
     width: 100%;
     border: 1px solid white;
@@ -247,7 +247,6 @@ footer a {
     text-align: center;  
     color: white;  
     margin-top: 80px;
-    display: none;
 }
 
 .sub-form input:nth-of-type(3) {
@@ -304,14 +303,16 @@ section h2::after {
 .act .time {
     white-space: nowrap;
     flex-shrink: 0;
-    width: 100px;
+    width: 30px;
     font-family: Space Mono;
 }
 
 .act .band {
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 
 .hidden-time .act .time {
@@ -563,7 +564,6 @@ section h2::after {
     main {
         max-width: 80%;
         margin-left: 10%;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
     }
 
     main #reg {
@@ -595,7 +595,7 @@ section h2::after {
         z-index: -1;
     }
 
-    .anmeldeschluss, .parkverbot {
+    .anmeldeschluss {
         height: auto;
         width: 20%;
         border: 1px solid white;
@@ -630,7 +630,7 @@ section h2::after {
 
     .day-container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 30%));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 30%));
         gap: 2rem;
         margin-top: 2rem;
     }
