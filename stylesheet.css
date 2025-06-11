@@ -280,11 +280,7 @@ footer a {
 }
 
 .pfeil {
-    display: inline-block;
-    font-size: 2em;
-    color: #333;
-    animation: pfeilBewegung 1.5s ease-in-out infinite;
-    margin-left: 10px;
+    display: none;
 }
 
 .stars span {
@@ -303,12 +299,8 @@ textarea {
     margin-top: 10px;
 }
 
-.pfeil {
-    margin-left: 40%;
-}
-
 #absendenBtn {
-    margin-left: 3%;
+    margin-left: 20%;
     padding: 10px 20px;
     font-size: 1em;
     cursor: pointer;
@@ -710,6 +702,18 @@ section h2::after {
     .bg-2-grundinfo table tr:nth-of-type(1) td:nth-of-type(3), 
     .bg-2-grundinfo table tr:nth-of-type(2) td:nth-of-type(3) {
         max-width: 18px;
+    }
+
+    .pfeil {
+        display: inline-block;
+        font-size: 2em;
+        color: #333;
+        animation: pfeilBewegung 1.5s ease-in-out infinite;
+        margin-left: 40%;
+    }
+
+    #absendenBtn {
+        margin-left: 3%;
     }
 
 /* Programm */
