@@ -113,13 +113,13 @@ h2::before {
     position: relative;
 }
 
-.anmeldeschluss, .parkverbot {
+.plakat, .parkverbot {
     height: auto;
     width: 100%;
     border: 1px solid white;
 }
 
-.anmeldeschluss-box-dp {
+.plakat-box-dp {
     display: none;
 }
 
@@ -595,18 +595,18 @@ section h2::after {
         z-index: -1;
     }
 
-    .anmeldeschluss, .parkverbot {
+    .plakat, .parkverbot {
         height: auto;
         width: 20%;
         border: 1px solid white;
         margin-left: 10%;
     }
 
-    .anmeldeschluss-box-dp {
+    .plakat-box-dp {
         display: flex;
     }
 
-    .anmeldeschluss-box-m {
+    .plakat-box-m {
         display: none;
     }
 
@@ -878,7 +878,7 @@ section h2::after {
     }
 
     .bg-2-section .bg-2 .main-nav {
-        margin-top: 250px;
+        margin-top: 100px;
         margin-left: 40%;
     }
 
