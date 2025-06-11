@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <title>Louisenfest DD | Feedback</title>
+    <meta name="author" content="&Eacute;mile Jeremias Ruff"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+
+    <link rel="stylesheet" href="../stylesheet.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="../script.js"></script>
+     
+</head>
+<body>
+  <div class="bg-1"></div>
+
+  <header class="header-mobil">
+    <div class="bg-2-section-reg">
+          <div class="bg-2-reg" id="bg2-mobil-reg">
+
+          <div class="main-nav">          
+              <p class="toggleTrigger" data-default-open="false" data-display="block"><img src="../b/menu.png" alt="menu">Men&#252;</p>
+              <ul class="toggleContent">
+                  <li><a href="../index.html">Homepage</a></li>
+                  <li><a href="programm.html">Programm</a></li>
+                  <li><a href="teilnahme.html">Teilnahme</a></li>
+                  <li><a href="verein.html">Verein</a></li>
+              </ul>
+          </div>
+        
+    </div>
+   </header>
+
+   <header class="header-desktop">
+        <div class="bg-2-section-reg">
+            <div class="bg-2" id="bg2-desktop">
+
+                <div class="main-nav">         
+                    <p class="toggleTrigger" data-default-open="true" data-display="flex">
+                    <img src="../b/menu.png" alt="menu">Men&#252;:</p>
+                    <ul class="toggleContent">
+                        <li><a href="../index.html" style="text-decoration: none;">Homepage</a></li>
+                        <li><img class="krone" src="../b/krone.png" alt="Krone"><a href="programm.html">Programm</a></li>
+                        <li><a href="teilnahme.html">Teilnahme</a></li>
+                        <li><a href="verein.html">Verein</a></li>
+                    </ul>
+                </div>
+
+                <div class="bg-2-grundinfo">          
+                      <table><tr><td><img src="../b/karte.png" alt="Karte"></td>
+                                 <td>Dresden Neustadt</td>
+                                 <td><img src="../b/logo-insta.png" alt="Logo Instagram"></td>
+                                 <td>&nbsp;<a href="https://www.instagram.com/louisenfest_dresden/#" title="Instagram (Externer Link)">louisenfest_dresden</a></td></tr>
+
+                             <tr><td><img src="../b/kalender.png" alt="Kalender"></td>
+                                 <td>20. bis 21. Juni 2025</td>
+                                 <td><img src="../b/logo-outlook.png" alt="Logo Outlook"></td>
+                                 <td>&nbsp;<a href="mailto:louisenfest@outlook.de" title="Mail Dienst (Externer Link)">louisenfest@outlook.de</a></td></tr>     
+                      </table>
+                </div>
+            </div>
+        </div>
+    </header>
+
+  <main>
+  <div class="content-below" id="reg">
+
+  <h1>Feedback</h1>
+  <p>Wie hat euch das Louisenfest gefallen? Lasst eine Bewertung da – mit oder 
+     ohne Kommentar. Wir freuen uns über euer Feedback! Die Bewertungen werden wir später veröffentlichen.</p>
+
+  <div class="stars" id="starContainer">
+    <span data-value="1">★</span>
+    <span data-value="2">★</span>
+    <span data-value="3">★</span>
+    <span data-value="4">★</span>
+    <span data-value="5">★</span>
+
+    <span class="pfeil">→</span>
+    <button id="absendenBtn">Absenden</button>
+  </div>
+
+  <textarea id="kommentar" placeholder="Optionaler Kommentar" rows="4"></textarea><br>
+
+  <div style="display: none;">
+  <h2>Alle Bewertungen</h2>
+  <label><input type="checkbox" id="showAll"/>Auch Bewertungen ohne Kommentar anzeigen</label>
+
+  <div id="bewertungen">Lade...</div>
+  </div>
+
+  </div>
+  </main>
+
+<!-- Footer -->
+    <form action="https://buttondown.com/api/emails/embed-subscribe/Player33"
+          method="post"
+          class="sub-form">
+      <p>Bleibe immer auf dem neuesten Stand mit unserem kostenlosem Newsletter:</p>   
+      <label for="email">E-Mail-Adresse:</label>
+      <input type="email" name="email" placeholder="you@example.com" />
+      <input type="hidden" value="1" name="embed" />
+      <input type="submit" value="Abonnieren" />
+    </form>
+
+    <div class="horizontale-linie"></div>
+    <footer class="footer-m">
+            <ul><li><a href="kontakt.html">Kontakt</a></li>
+                <li>|</li>
+                <li><a href="impressum.html">Impressum</a></li>
+            </ul>
+            <p><a href="Lou_AGB.pdf" download>AGB (Download)</a></p>        
+    </footer>
+
+    <footer class="footer-dp">
+            <ul><li><a href="kontakt.html">Kontakt</a></li>
+                <li>|</li>
+                <li><a href="dati.html">AGB&nbsp; & &nbsp;Datenschutz</a></li>
+                <li>|</li>
+                <li><a href="impressum.html">Impressum</a></li>
+            </ul>
+    </footer>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+  import {
+    getFirestore, collection, addDoc, getDocs, serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBnEnZrko6pqy5Q5ZAYlo3iW30hc1F_oV8",
+    authDomain: "programm-louisenfest.firebaseapp.com",
+    projectId: "programm-louisenfest",
+    storageBucket: "programm-louisenfest.firebasestorage.app",
+    messagingSenderId: "385737458779",
+    appId: "1:385737458779:web:f80e7317d6eb94f446ab7e"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  let bewertung = 0;
+
+  const stars = document.querySelectorAll('#starContainer span');
+  stars.forEach(star => {
+    star.addEventListener('click', () => {
+      bewertung = parseInt(star.dataset.value);
+      stars.forEach(s => s.classList.remove('selected'));
+      for (let i = 0; i < bewertung; i++) {
+        stars[i].classList.add('selected');
+      }
+    });
+  });
+
+  const rechtsextremistischeWoerter = [
+    "hitler",
+    "hakenkreuz",
+    "adolfhitler",
+    "siegheil",
+    "deutschlanderwache",
+    "rotfrontverrecke",
+    "einvolk,einreich,einführer",
+    "rahowa",
+    "whitepower",
+    "zog",
+    "gnls",
+    "heilhitler",
+    "wehrmacht",
+    "reichsbürger",
+    "rechtsradikal",
+    "nationalsozialismus",
+    "jugendschutzgesetzverweigert",
+    "fackelnacht",
+    "fackelmarsch",
+    "holocaustleugner",
+    "judenfrei",
+    "endlösung",
+    "volksverräter",
+    "ausländerfrei",
+    "völkisch",
+    "blutundboden",
+    "reichskristallnacht",
+    "identitärebewegung",
+    "heimatverteidigung"
+  ];
+
+  function kommentarFilter(kommentar) {
+    const komp = kommentar.toLowerCase().replace(/\s+/g, "");
+
+    for (const wort of rechtsextremistischeWoerter) {
+      if (komp.includes(wort)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  async function absenden() {
+    if (localStorage.getItem("bewertetSchon")) {
+      alert("Du hast bereits abgestimmt. Vielen Dank!");
+      return;
+    }
+
+    if (bewertung < 1 || bewertung > 5) {
+      alert("Bitte gib eine Sternebewertung (1–5) ab.");
+      return;
+    }
+
+    const kommentar = document.getElementById("kommentar").value.trim();
+
+    if (kommentarFilter(kommentar)) {
+      alert("Dein Kommentar enthält unerlaubte Ausdrücke und wurde nicht gespeichert.");
+      return;
+    }
+
+    const daten = {
+      sterne: bewertung,
+      zeitstempel: serverTimestamp()
+    };
+
+    if (kommentar !== "") {
+      daten.kommentar = kommentar;
+    }
+
+    try {
+      await addDoc(collection(db, "evaluation"), daten);
+      localStorage.setItem("bewertetSchon", "true");
+      alert("Danke für deine Bewertung!");
+      document.getElementById("kommentar").value = "";
+      stars.forEach(s => s.classList.remove("selected"));
+      bewertung = 0;
+      ladeBewertungen();
+    } catch (error) {
+      console.error("Fehler beim Senden:", error);
+      alert("Fehler beim Senden. Bitte später versuchen.");
+    }
+  }
+
+  async function ladeBewertungen() {
+    const snapshot = await getDocs(collection(db, "evaluation"));
+    const daten = [];
+    snapshot.forEach(doc => daten.push(doc.data()));
+
+    const container = document.getElementById("bewertungen");
+    if (daten.length === 0) {
+      container.innerHTML = "<p>Noch keine Bewertungen.</p>";
+      return;
+    }
+
+    let summe = 0;
+    let anzahl = 0;
+
+    daten.forEach(b => {
+      if (typeof b.sterne === "number") {
+        summe += b.sterne;
+        anzahl++;
+      }
+    });
+
+    const durchschnitt = anzahl > 0 ? (summe / anzahl).toFixed(1) : "0.0";
+    const showAll = document.getElementById("showAll").checked;
+
+    let gefilterteDaten = daten;
+    if (!showAll) {
+      gefilterteDaten = daten.filter(b => b.kommentar && b.kommentar.trim() !== "");
+    }
+
+    let html = `
+      <p>
+        <strong>
+          ${durchschnitt} von 5 Sternen (${daten.length} Bewertungen insgesamt)
+        </strong>
+      </p>
+    `;
+
+    html += "<ul>";
+    gefilterteDaten
+      .sort((a, b) => new Date(b.zeitstempel?.seconds * 1000 || 0) - new Date(a.zeitstempel?.seconds * 1000 || 0))
+      .forEach(b => {
+        html += `<li>${"★".repeat(b.sterne)}${"☆".repeat(5 - b.sterne)} – ${b.kommentar || "<em>Kein Kommentar</em>"}</li>`;
+      });
+    html += "</ul>";
+
+    container.innerHTML = html;
+  }
+
+  document.getElementById("absendenBtn").addEventListener("click", absenden);
+  document.getElementById("showAll").addEventListener("change", ladeBewertungen);
+  ladeBewertungen();
+</script>
+
+</body>
+</html>

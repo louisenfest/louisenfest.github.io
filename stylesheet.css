@@ -269,6 +269,95 @@ footer a {
     display: none;
 }    
 
+
+/* ================
+       Feedback
+   ================ */
+@keyframes pfeilBewegung {
+    0%   { transform: translateX(0); }
+    50%  { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+}
+
+.pfeil {
+    display: inline-block;
+    font-size: 2em;
+    color: #333;
+    animation: pfeilBewegung 1.5s ease-in-out infinite;
+    margin-left: 10px;
+}
+
+.stars span {
+    font-size: 2em;
+    cursor: pointer;
+    color: white;
+    transition: color 0.2s;
+}
+
+.stars .selected {
+    color: gold;
+}
+
+textarea {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.pfeil {
+    margin-left: 40%;
+}
+
+#absendenBtn {
+    margin-left: 3%;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+
+    color: white;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+#absendenBtn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+#bewertungen {
+    margin-top: 2em;
+}
+
+#bewertungen li {
+    margin-bottom: 0.5em;
+    list-style: none;
+}
+
+/* Visuelle Durchschnittsanzeige */
+.sterne-durchschnitt {
+  position: relative;
+  display: inline-block;
+  font-size: 1.8em;
+  line-height: 1;
+  width: 5em; /* exakt 5 Sterne */
+  direction: ltr;
+}
+.sterne-bg,
+.sterne-fg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.sterne-bg {
+  color: lightgray;
+  width: 5em;
+}
+.sterne-fg {
+  color: gold;
+  pointer-events: none;
+}
+
 /* ================
        Programm
    ================ */
@@ -873,8 +962,17 @@ section h2::after {
    ================ */
 @media (min-width: 1024px) and (max-width: 1439px) {
     main #reg {
-        margin-top: -380px;
-        margin-left: 355px;
+        margin-top: -350px;
+        margin-left: 27%;
+    }
+
+    .bg-2-section-reg .bg-2 .main-nav {
+        margin-top: -100px;
+        margin-left: 30%;
+    }
+
+    .bg-2-section-reg .bg-2-grundinfo {
+        margin-left: 30%;
     }
 
     .bg-2-section .bg-2 .main-nav {
