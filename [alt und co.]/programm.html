@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <title>Louisenfest DD | Programm</title>
+    <meta name="author" content="Émile Jeremias Ruff"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <link rel="stylesheet" href="../stylesheet.css?v=1006" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="../script.js"></script>
+</head>
+<body>
+    <div class="bg-1"></div>
+
+    <header class="header-mobil">
+        <div class="bg-2-section-reg">
+            <div class="bg-2-reg" id="bg2-mobil-reg">
+                <div class="main-nav">          
+                    <p class="toggleTrigger" data-default-open="false" data-display="block">
+                    <img src="../b/menu.png" alt="menu">Menü</p>
+                    <ul class="toggleContent">
+                        <li><a href="../index.html">Homepage</a></li>
+                        <li><a href="programm.html">Programm</a></li>
+                        <li><a href="teilnahme.html">Teilnahme</a></li>
+                        <li><a href="verein.html">Verein</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <header class="header-desktop">
+        <div class="bg-2-section-reg">
+            <div class="bg-2" id="bg2-desktop">
+                <div class="main-nav">         
+                    <p><img src="../b/menu.png" alt="menu">Menü:</p>
+                    <ul>
+                        <li><a href="../index.html" style="text-decoration: none;">Homepage</a></li>
+                        <li><img class="krone" src="../b/krone.png" alt="Krone"><a href="programm.html">Programm</a></li>
+                        <li><a href="teilnahme.html">Teilnahme</a></li>
+                        <li><a href="verein.html">Verein</a></li>
+                    </ul>
+                </div>
+                <div class="bg-2-grundinfo">          
+                      <table><tr><td><img src="../b/karte.png" alt="Karte"></td>
+                                 <td>Dresden Neustadt</td>
+                                 <td><img src="../b/logo-insta.png" alt="Logo Instagram"></td>
+                                 <td>&nbsp;<a href="https://www.instagram.com/louisenfest_dresden" title="Instagram (Externer Link)">louisenfest_dresden</a></td></tr>
+
+                             <tr><td><img src="../b/kalender.png" alt="Kalender"></td>
+                                 <td>20. bis 21. Juni 2025</td>
+                                 <td><img src="../b/logo-outlook.png" alt="Logo Outlook"></td>
+                                 <td>&nbsp;<a href="mailto:louisenfest@outlook.de" title="Mail Dienst (Externer Link)">louisenfest@outlook.de</a></td></tr>     
+                      </table>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="programm">
+        <div class="content-below" id="reg">
+            <h1 style="margin-top: 10px">Programm</h1>
+            <p class="link-before">Wer spielt wo, wann und was? Hier könnt ihr unser genaues Programm nachlesen.<br>
+            Welche Bühne ist welche? <a href="#buehnen"><u>Hier</u></a> sind alle stages kartegraphiert.</p>
+
+            <table class="maps">
+                <tr><td><img src="../b/music.png" alt="Bühnen"><a href="#buehnen">Bühnen</a></td>
+                    <td><img src="../b/shop.png" alt="Gewerbe"><a target="_blank" rel="noopener noreferrer" href="https://umap.openstreetmap.de/de/map/gewerbe-louisenfest-dresden-2025-louisenfestcom_96864?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true">Gewerbe</a></td></tr>
+                
+                <tr><td><img src="../b/food.png" alt="Essen"><a target="_blank" rel="noopener noreferrer" href="https:////umap.openstreetmap.de/de/map/essenstande-louisenfest-dresden-2025-louisenfestco_96862?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true">Essensstände</a></td>
+                    <td><img src="../b/drink.png" alt="Trinken"><a target="_blank" rel="noopener noreferrer" href="https:////umap.openstreetmap.de/de/map/getrankestande-louisenfest-dresden-2025-louisenfes_96863?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true">Getränkestände</a></td></tr>
+            </table>
+
+            <section id="a-park-section">
+                <h2 class="toggleTrigger" data-default-open="true" data-display="block">Bühne A-Park
+                <img class="toggle-png" src="../b/toggle-down.png" alt="Bild"></h2>
+                <div class="toggleContent" id="a-park"></div>
+            </section>
+
+            <section id="mondpalast-section">
+                <h2 class="toggleTrigger" data-default-open="false" data-display="block">Mondpalast-Bühne 
+                <img class="toggle-png" src="../b/toggle-up.png" alt="Bild"></h2>
+                <div class="toggleContent" id="mondpalast"></div>
+            </section>
+
+            <section id="grubers-section">
+                <h2 class="toggleTrigger" data-default-open="false" data-display="block">Grubers-Bühne 
+                <img class="toggle-png" src="../b/toggle-up.png" alt="Bild"></h2>
+                <div class="toggleContent" id="grubers"></div>
+            </section>
+
+            <section id="little-creatures-section">
+                <h2 class="toggleTrigger" data-default-open="false" data-display="block">Lobo-Bühne
+                <img class="toggle-png" src="../b/toggle-up.png" alt="Bild"></h2>
+                <div class="toggleContent" id="creatures"></div>
+            </section>
+            
+            <section id="roh-section">
+                <h2 class="toggleTrigger" data-default-open="false" data-display="block">Roh-Bühne
+                <img class="toggle-png" src="../b/toggle-up.png" alt="Bild"></h2>
+                <div class="toggleContent" id="roh"></div>
+            </section>
+
+            <section id="el-cubanito-section">
+                <h2 class="toggleTrigger" data-default-open="false" data-display="block">El-Cubanito-Bühne
+                <img class="toggle-png" src="../b/toggle-up.png" alt="Bild"></h2>
+                <div class="toggleContent" id="el-cubanito"></div>
+            </section>
+
+            <section id="next-five-section">
+                <h2 class="toggleTrigger" data-default-open="false" data-display="block">Nächste 5 Acts 
+                <img class="toggle-png" src="../b/toggle-up.png" alt="Bild"></h2>
+                <div id="next-five-events" class="next-events"></div>
+            </section>
+
+            <p id="buehnen">Bühnen</p>
+            <iframe class="map" width="100%" frameborder="0" allowfullscreen allow="geolocation" src="https://umap.openstreetmap.de/de/map/louisenfest-dresden-2025_92999?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true&datalayers=41ad50bd-c459-4f3b-aad0-503903fc4fd5&fullscreenControl=null&editinosmControl=false#17/51.06698/13.75604"></iframe>
+            <p><a href="https://umap.openstreetmap.de/de/map/louisenfest-dresden-2025_92999?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true&datalayers=41ad50bd-c459-4f3b-aad0-503903fc4fd5&fullscreenControl=null&editinosmControl=false#17/51.06698/13.75604">Vollbildanzeige</a></p> </div>
+    </main>
+
+<!-- Footer -->
+    <form action="https://buttondown.com/api/emails/embed-subscribe/Louisenfest             "
+          method="post"
+          class="sub-form">
+      <p>Bleibe immer auf dem neuesten Stand mit unserem kostenlosem Newsletter:</p>   
+      <label for="email">E-Mail-Adresse:</label>
+      <input type="email" name="email" placeholder="you@example.com" />
+      <input type="hidden" value="1" name="embed" />
+      <input type="submit" value="Abonnieren" />
+    </form>
+
+    <div class="horizontale-linie"></div>
+    <footer class="footer-m">
+            <ul><li><a href="kontakt.html">Kontakt</a></li>
+                <li>|</li>
+                <li><a href="impressum.html">Impressum</a></li>
+            </ul>
+            <p><a href="dati.html">AGB&nbsp; & &nbsp;Datenschutz</a></p>        
+    </footer>
+
+    <footer class="footer-dp">
+            <ul><li><a href="kontakt.html">Kontakt</a></li>
+                <li>|</li>
+                <li><a href="dati.html">AGB&nbsp; & &nbsp;Datenschutz</a></li>
+                <li>|</li>
+                <li><a href="impressum.html">Impressum</a></li>
+            </ul>
+    </footer>
+
+    <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyBnEnZrko6pqy5Q5ZAYlo3iW30hc1F_oV8",
+        authDomain: "programm-louisenfest.firebaseapp.com",
+        projectId: "programm-louisenfest",
+        storageBucket: "programm-louisenfest.firebasestorage.app",
+        messagingSenderId: "385737458779",
+        appId: "1:385737458779:web:f80e7317d6eb94f446ab7e"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    function formatTime(ts) {
+        const date = typeof ts.toDate === 'function' ? ts.toDate() : new Date(ts);
+        return date.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });    
+    }
+
+    function formatDate(ts) {
+        const date = typeof ts.toDate === 'function' ? ts.toDate() : new Date(ts);
+        return date.toLocaleDateString('de-DE', {
+            weekday: 'long',
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric'
+        });
+    }
+
+    async function loadStage(stageId, collectionName) {
+        const snapshot = await getDocs(collection(db, collectionName));
+        const container = document.getElementById(stageId);
+        const actsByDay = {};
+
+        snapshot.forEach(doc => {
+            const data = doc.data();
+            const dateKey = formatDate(data.start);
+            if (!actsByDay[dateKey]) actsByDay[dateKey] = [];
+            actsByDay[dateKey].push({
+                band: data.band,
+                start: data.start,
+                end: data.end,
+                link: data.link || "#",
+                info: data.info || " - "
+            });
+        });
+
+        const dayContainer = document.createElement("div");
+        dayContainer.className = "day-container";
+
+        Object.keys(actsByDay).sort().forEach(dateKey => {
+            const dayBlock = document.createElement("div");
+            dayBlock.className = "day-block";
+
+            const dayHeader = document.createElement("h3");
+            dayHeader.textContent = dateKey;
+            dayBlock.appendChild(dayHeader);
+
+            const acts = actsByDay[dateKey];
+            acts.sort((a, b) => {
+                const aStart = typeof a.start.toDate === 'function' ? a.start.toDate() : new Date(a.start);
+                const bStart = typeof b.start.toDate === 'function' ? b.start.toDate() : new Date(b.start);
+                return aStart - bStart;
+            });
+
+            acts.forEach(act => {
+                const actDiv = document.createElement("div");
+                actDiv.className = "act";
+
+                const timeDiv = document.createElement("div");
+                timeDiv.className = "time";
+                timeDiv.textContent = `${formatTime(act.start)}`;
+
+                const bandDiv = document.createElement("div");
+                bandDiv.className = "band";
+
+                const bandLink = document.createElement("a");
+                bandLink.href = act.link;
+                bandLink.textContent = act.band;
+                bandLink.target = "_blank";
+                bandLink.rel = "noopener noreferrer";
+                bandLink.title = `Genre: ${act.info}   |   Externer Link: Instagram`;
+
+                bandDiv.appendChild(bandLink);
+                actDiv.appendChild(timeDiv);
+                actDiv.appendChild(bandDiv);
+                dayBlock.appendChild(actDiv);
+            });
+
+            dayContainer.appendChild(dayBlock);
+        });
+
+        container.appendChild(dayContainer);
+    }
+
+    async function loadNextFiveEvents() {
+        const stages = ["a-park", "mondpalast", "grubers", "little-creatures", "roh", "el-cubanito"];
+        let events = [];
+
+        for (const stage of stages) {
+            const snapshot = await getDocs(collection(db, stage));
+            snapshot.forEach(doc => {
+                const data = doc.data();
+                events.push({
+                    band: data.band,
+                    start: data.start,
+                    stageName: data.stage || stage,
+                    link: data.link || "#",
+                    info: data.info || " - "
+                });
+            });
+        }
+
+        const now = new Date();
+        events = events
+            .filter(e => {
+                const startDate = typeof e.start.toDate === 'function' ? e.start.toDate() : new Date(e.start);
+                return startDate > now;
+            })
+            .sort((a, b) => {
+                const aStart = typeof a.start.toDate === 'function' ? a.start.toDate() : new Date(a.start);
+                const bStart = typeof b.start.toDate === 'function' ? b.start.toDate() : new Date(b.start);
+                return aStart - bStart;
+            })
+            .slice(0, 5);
+
+        const container = document.getElementById("next-five-events");
+        container.innerHTML = "";
+
+        events.forEach(event => {
+            const eventDiv = document.createElement("div");
+            eventDiv.className = "act";
+
+            const timeDiv = document.createElement("div");
+            timeDiv.className = "time";
+            timeDiv.textContent = `${formatTime(event.start)}`;
+
+            const stageDiv = document.createElement("div");
+            stageDiv.className = "stage";
+            stageDiv.textContent = event.stageName;
+
+            const bandDiv = document.createElement("div");
+            bandDiv.className = "band";
+
+            const bandLink = document.createElement("a");
+            bandLink.href = event.link;
+            bandLink.textContent = event.band;
+            bandLink.target = "_blank";
+            bandLink.rel = "noopener noreferrer";
+            bandLink.title = `Genre: ${event.info}   |   Externer Link: Instagram`;
+
+            bandDiv.appendChild(bandLink);
+            eventDiv.appendChild(timeDiv);
+            eventDiv.appendChild(stageDiv);
+            eventDiv.appendChild(bandDiv);
+            container.appendChild(eventDiv);
+        });
+    }
+
+    loadStage("a-park", "a-park");
+    loadStage("mondpalast", "mondpalast");
+    loadStage("grubers", "grubers");
+    loadStage("creatures", "little-creatures");
+    loadStage("el-cubanito", "el-cubanito");
+    loadStage("roh", "roh");
+    loadNextFiveEvents();
+    </script>
+
+
+</body>
+</html>
