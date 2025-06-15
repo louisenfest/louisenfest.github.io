@@ -18,23 +18,38 @@ main {
 }
 
 /* Grundlagen */
-    a {
+    a, .maps td {
         color: white;
         text-decoration: underline; 
         cursor: pointer;
     }
 
-    .bg-2-grundinfo a, footer a, .band a {
+    .bg-2-grundinfo a, 
+    footer a, 
+    .band a, 
+    .maps a,
+    .rave a,
+    .maps td {
         text-decoration: none;
         position: relative;
         transition: transform 0.4s ease-out;
     }
 
-    .bg-2-grundinfo a:hover::after, footer a:hover::after, .band a:hover::after {
+    .bg-2-grundinfo a:hover::after, 
+    footer a:hover::after, 
+    .band a:hover::after, 
+    .maps a:hover::after,
+    .rave a:hover::after,
+    .maps td:hover::after {
         transform: scaleX(1);
     }
 
-    .bg-2-grundinfo a::after, footer a::after, .band a::after {
+    .bg-2-grundinfo a::after, 
+    footer a::after, 
+    .band a::after, 
+    .maps a:after,
+    .rave a:after,
+    .maps td:after {
         content: "";
         position: absolute;
         bottom: 0;
@@ -130,27 +145,6 @@ h2::before {
     padding-right: 20px;
 }
 
-.map {
-    border-radius: 10px;
-    border: 1.5px dashed white;
-    height: 300px;
-}
-
-.toggle-png {
-    width: 15px;
-    height: auto;
-    margin-bottom: 3px;
-    margin-left: 10px;
-    display: inline-block;
-}
-
-#buehnen {
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 100px;
-}
-
 .horizontale-linie {
     border: none;
     max-width: 90%;
@@ -160,6 +154,73 @@ h2::before {
     background-color: white;
     margin-top: 30px;
 }
+
+/* Karten */
+    .map {
+        border-radius: 10px;
+        height: 300px;
+    }
+
+    .maps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0px auto 70px auto;
+      font-size: 20px;
+      max-width: 100%;
+      justify-content: center;
+    }
+
+    .maps > div {
+        width: 100%;
+        padding: 10px 15px;
+        border-radius: 8px;
+        color: white;
+        text-align: center;
+        border: 1px solid transparent;
+    }
+
+    .maps > div:hover{
+        border: 1px dashed white;
+    }
+
+    .maps > div:nth-of-type(1) { background-color: rgba(255, 0, 0, 0.4); }
+    .maps > div:nth-of-type(2) { background-color: rgba(255, 165, 0, 0.4); }
+    .maps > div:nth-of-type(3) { background-color: rgba(255, 255, 0, 0.4); }
+    .maps > div:nth-of-type(4) { background-color: rgba(0, 128, 0, 0.4); }
+    .maps > div:nth-of-type(5) { background-color: rgba(0, 0, 255, 0.4); }
+    .maps > div:nth-of-type(6) { background-color: rgba(128, 0, 128, 0.4); }
+
+    #buehnen img, #kultur img, #sanitaer img, #jammjamm img, #cocktail img, #bier img {
+        width: 50px;
+        height: auto;
+    }
+
+    .maps img {
+      height: 30px;
+      padding-right: 10px;
+      vertical-align: middle;
+    }
+
+    .toggle-png {
+        width: 15px;
+        height: auto;
+        margin-bottom: 3px;
+        margin-left: 10px;
+        display: inline-block;
+    }
+
+    .rave li {
+        list-style: none;
+        font-size: 20px;
+    }
+
+    #buehnen, #jammjamm, #sanitaer, #cocktail, #kultur, #bier {
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+    }
+/**/
 
 /* Dati */
     .dati-h1-dp, .dati-start-2 {
@@ -279,6 +340,22 @@ footer a {
     100% { transform: translateX(0); }
 }
 
+#starContainer img {
+  width: 30px;
+  height: auto;
+  cursor: pointer;
+  margin-right: 5px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.krone-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 2px;
+  vertical-align: middle;
+}
+
 .pfeil {
     display: none;
 }
@@ -300,8 +377,8 @@ textarea {
 }
 
 #absendenBtn {
-    margin-left: 20%;
-    padding: 10px 20px;
+    margin-left: 10%;
+    padding: 5px 10px;
     font-size: 1em;
     cursor: pointer;
 
@@ -324,31 +401,86 @@ textarea {
     list-style: none;
 }
 
-/* Visuelle Durchschnittsanzeige */
-.sterne-durchschnitt {
-  position: relative;
-  display: inline-block;
-  font-size: 1.8em;
-  line-height: 1;
-  width: 5em; /* exakt 5 Sterne */
-  direction: ltr;
+.stars {
+    margin-top: 10%;
 }
-.sterne-bg,
-.sterne-fg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  white-space: nowrap;
-  overflow: hidden;
+
+#kommentar {
+    margin-bottom: 40%;
 }
-.sterne-bg {
-  color: lightgray;
-  width: 5em;
-}
-.sterne-fg {
-  color: gold;
-  pointer-events: none;
-}
+
+/* Feedbackback */
+    #adminFeedbacks ul {
+      list-style: none;
+      padding: 0;
+    }
+    #adminFeedbacks li {
+      background-color: rgba(255, 255, 255, 0.1);
+      margin: 0.5rem 0;
+      padding: 1rem;
+      border-radius: 8px;
+      max-width: 65%;
+    }
+
+    #adminFeedbacks p {
+      margin-top: 30px;
+    }
+
+    .sterne {
+      font-size: 1.2rem;
+      color: #f9b300;
+    }
+
+    .kommentar {
+      margin-top: 0.5rem;
+    }
+
+    #login-section input {
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.2);
+      outline: none;
+      border: none;
+      color: white;
+      border-radius: 3px;
+    }
+
+    #login-section input:hover, #login-section input:focus {
+      border: 1px dashed white;
+    }
+
+    #login-section input::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    #login-button:hover {
+      border: 1px dashed white;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    #login-button {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid none;
+      color: white;
+      background-color: rgba(255, 255, 255, 0.3);
+      margin-left: 5%;
+    }
+
+    #logout-button {
+      display: block;
+      margin-left: 50%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid white;
+      color: white;
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    #logout-button:hover {
+      background-color: rgba(255, 255, 255, 0.1);  
+    }
+    /**/
+
 
 /* ================
        Programm
@@ -386,6 +518,14 @@ section h2::after {
     flex-shrink: 0;
     width: 30px;
     font-family: Space Mono;
+}
+
+#little-creatures-section .day-block:nth-of-type(2) .act:nth-of-type(2) .time,
+#little-creatures-section .day-block:nth-of-type(2) .act:nth-of-type(3) .time,
+#little-creatures-section .day-block:nth-of-type(2) .act:nth-of-type(4) .time,
+#roh-section .day-block:nth-of-type(1) .act:nth-of-type(7) .time, 
+#roh-section .day-block:nth-of-type(1) .act:nth-of-type(8) .time {
+    color: transparent;
 }
 
 .act .band {
@@ -699,6 +839,15 @@ section h2::after {
         height: 600px;
     }
 
+    .maps > div {
+        width: calc(13.666% - 10px);
+    }
+
+    #absendenBtn {
+        margin-left: 20%;
+        padding: 10px 20px;
+    }
+
     .bg-2-grundinfo table tr:nth-of-type(1) td:nth-of-type(3), 
     .bg-2-grundinfo table tr:nth-of-type(2) td:nth-of-type(3) {
         max-width: 18px;
@@ -714,6 +863,18 @@ section h2::after {
 
     #absendenBtn {
         margin-left: 3%;
+    }
+
+    .stars {
+        margin-top: 0%;
+    }
+
+    #kommentar {
+        margin-bottom: 0%;
+    }
+
+    #adminFeedbacks p {
+        margin-top: -30px;
     }
 
 /* Programm */
@@ -986,5 +1147,14 @@ section h2::after {
 
     .bg-2-section .bg-2-grundinfo {
         margin-left: 40%;
+    }
+
+    .maps > div {
+        padding: 10px 0px;
+        width: calc(33.333% - 10px);
+    }
+
+    #logout-button {
+        margin-left: 70%;
     }
 }

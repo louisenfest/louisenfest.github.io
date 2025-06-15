@@ -68,37 +68,52 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', () => {
   const triggers = document.querySelectorAll('.toggleTrigger');
 
+  // Nur die data-target-basierten sollen sich gegenseitig ausschließen
+  const closeAllTargets = () => {
+    document.querySelectorAll('.toggleContent[data-exclusive="true"]').forEach(el => {
+      el.style.display = 'none';
+      el.dataset.expanded = 'false';
+    });
+  };
+
   triggers.forEach(trigger => {
-    const menu = trigger.nextElementSibling;
     const png = trigger.querySelector('.toggle-png');
+    const targetSelector = trigger.getAttribute('data-target');
+    const defaultOpen = trigger.getAttribute('data-default-open') === 'true';
+    const displayType = trigger.getAttribute('data-display') || 'block';
 
-    const getDefaultOpen = () => {
-      const attr = trigger.getAttribute('data-default-open');
-      return attr === 'true';
-    };
+    // Ziel-Element ermitteln
+    const target = targetSelector
+      ? document.querySelector(targetSelector)
+      : trigger.nextElementSibling;
 
-    const getDisplayType = () => {
-      return trigger.getAttribute('data-display') || 'block';
-    };
+    if (!target) return;
 
-    const setInitialState = () => {
-      const defaultOpen = getDefaultOpen();
-      const displayType = getDisplayType();
-      menu.style.display = defaultOpen ? displayType : 'none';
-      menu.dataset.expanded = defaultOpen.toString();
-    };
+    // Anfangszustand
+    target.style.display = defaultOpen ? displayType : 'none';
+    target.dataset.expanded = defaultOpen.toString();
 
+    if (targetSelector) {
+      target.classList.add('toggleContent'); // sicherstellen, dass auch diese Klasse vorhanden ist
+      target.setAttribute('data-exclusive', 'true');
+    }
+
+    // Toggle-Event
     trigger.addEventListener('click', () => {
-      const isExpanded = menu.dataset.expanded === 'true';
-      const displayType = getDisplayType();
-      menu.style.display = isExpanded ? 'none' : displayType;
-      menu.dataset.expanded = (!isExpanded).toString();
+      const isExpanded = target.dataset.expanded === 'true';
+
+      if (targetSelector) {
+        // nur für data-target (Maps): alle schließen
+        if (!isExpanded) closeAllTargets();
+      }
+
+      target.style.display = isExpanded ? 'none' : displayType;
+      target.dataset.expanded = (!isExpanded).toString();
 
       if (png) {
-        png.src = !isExpanded ? '../b/toggle-down.png' : '../b/toggle-up.png';
+        png.src = isExpanded ? '../b/toggle-up.png' : '../b/toggle-down.png';
       }
     });
-
-    setInitialState();
   });
 });
+
