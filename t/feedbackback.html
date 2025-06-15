@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+        <title>Louisenfest DD | Feedbackback</title>
+        <meta name="author" content="&Eacute;mile Jeremias Ruff"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="icon" type="image/png" href="../favicon.ico">
+
+        <link rel="stylesheet" href="../stylesheet.css" type="text/css">
+        <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+        <meta charset="UTF-8">
+        <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Expires" content="0">
+
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+        <script src="../script.js"></script>
+</head>
+<body>
+  <div class="bg-1"></div>
+
+  <header class="header-mobil">
+    <div class="bg-2-section-reg">
+          <div class="bg-2-reg" id="bg2-mobil-reg">
+
+          <div class="main-nav">          
+              <p class="toggleTrigger" data-default-open="false" data-display="block"><img src="../b/menu.png" alt="menu">Men&#252;</p>
+              <ul class="toggleContent">
+                  <li><a href="../index.html">Homepage</a></li>
+                  <li><a href="programm.html">Programm</a></li>
+                  <li><a href="teilnahme.html">Teilnahme</a></li>
+                  <li><a href="verein.html">Verein</a></li>
+              </ul>
+          </div>
+        
+    </div>
+   </header>
+
+
+    <header class="header-desktop">
+        <div class="bg-2-section-reg">
+            <div class="bg-2" id="bg2-desktop">
+
+                <div class="main-nav">         
+                    <p class="toggleTrigger" data-default-open="true" data-display="flex">
+                    <img src="../b/menu.png" alt="menu">Men&#252;:</p>
+                    <ul class="toggleContent">
+                        <li><a href="../index.html" style="text-decoration: none;">Homepage</a></li>
+                        <li><a href="programm.html">Programm</a></li>
+                        <li><a href="teilnahme.html">Teilnahme</a></li>
+                        <li><a href="verein.html">Verein</a></li>
+                    </ul>
+                </div>
+
+                <div class="bg-2-grundinfo">          
+                      <table><tr><td><img src="../b/karte.png" alt="Karte"></td>
+                                 <td>Dresden Neustadt</td>
+                                 <td><img src="../b/logo-insta.png" alt="Logo Instagram"></td>
+                                 <td>&nbsp;<a href="https://www.instagram.com/louisenfest_dresden/#" title="Instagram (Externer Link)">louisenfest_dresden</a></td></tr>
+
+                             <tr><td><img src="../b/kalender.png" alt="Kalender"></td>
+                                 <td>20. bis 21. Juni 2025</td>
+                                 <td><img src="../b/logo-outlook.png" alt="Logo Outlook"></td>
+                                 <td>&nbsp;<a href="mailto:louisenfest@outlook.de" title="Mail Dienst (Externer Link)">louisenfest@outlook.de</a></td></tr>     
+                      </table>
+                </div>
+            </div>
+        </div>
+    </header>
+
+  <main>
+  <div class="content-below" id="reg">
+
+    <h1>Feedbackback</h1>
+
+  <div id="login-section" style="display:none">
+      <p>Bitte bestätige deine Identität, um die Kommentare einzusehen.</p>
+      <input type="text" id="username" placeholder="Benutzername" />
+      <input type="password" id="password" placeholder="Passwort" />
+      <button id="login-button">Einloggen</button>
+  </div>
+
+  <button id="logout-button" style="display:none;">Ausloggen</button>
+
+  <div id="adminFeedbacks" style="display:none">
+    <p><em>Feedback wird geladen…</em></p>
+  </div>
+
+
+  </div>
+  </main>
+
+<!-- Footer -->
+    <form action="https://buttondown.com/api/emails/embed-subscribe/LouOrga"
+          method="post"
+          class="sub-form">
+      <p>Bleibe immer auf dem neuesten Stand mit unserem kostenlosem Newsletter:</p>   
+      <label for="email">E-Mail-Adresse:</label>
+      <input type="email" name="email" placeholder="you@example.com" />
+      <input type="hidden" value="1" name="embed" />
+      <input type="submit" value="Abonnieren" />
+    </form>
+
+    <div class="horizontale-linie"></div>
+    <footer class="footer-m">
+            <ul><li><a href="kontakt.html">Kontakt</a></li>
+                <li>|</li>
+                <li><a href="impressum.html">Impressum</a></li>
+            </ul>
+            <p><a href="Lou_AGB.pdf" download>AGB (Download)</a></p>        
+    </footer>
+
+    <footer class="footer-dp">
+            <ul><li><a href="kontakt.html">Kontakt</a></li>
+                <li>|</li>
+                <li><a href="dati.html">AGB&nbsp; & &nbsp;Datenschutz</a></li>
+                <li>|</li>
+                <li><a href="impressum.html">Impressum</a></li>
+            </ul>
+    </footer>
+
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import {
+      getFirestore, collection, getDocs
+    } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+    import {
+      getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut,
+      setPersistence, browserLocalPersistence
+    } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBnEnZrko6pqy5Q5ZAYlo3iW30hc1F_oV8",
+      authDomain: "programm-louisenfest.firebaseapp.com",
+      projectId: "programm-louisenfest",
+      storageBucket: "programm-louisenfest.appspot.com",
+      messagingSenderId: "385737458779",
+      appId: "1:385737458779:web:f80e7317d6eb94f446ab7e"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth();
+
+    // 1h Timeout (ms)
+    const TIMEOUT_MS = 60 * 60 * 1000;
+    let logoutTimer;
+
+    function resetLogoutTimer() {
+      if (logoutTimer) clearTimeout(logoutTimer);
+      logoutTimer = setTimeout(() => {
+        alert("Session abgelaufen, du wirst ausgeloggt.");
+        doLogout();
+      }, TIMEOUT_MS);
+    }
+
+    setPersistence(auth, browserLocalPersistence);
+
+    const loginSection = document.getElementById("login-section");
+    const adminFeedbacks = document.getElementById("adminFeedbacks");
+    const logoutBtn = document.getElementById("logout-button");
+
+
+    document.getElementById("login-button").addEventListener("click", () => {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+
+      if (!username || !password) {
+        alert("B.name und PW erforderlich");
+        return;
+      }
+
+      const email = `${username}@example.com`;
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          resetLogoutTimer();
+        })
+        .catch(e => alert("Login fehlgeschlagen: " + e.message));
+    });
+
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        loginSection.style.display = "none";
+        adminFeedbacks.style.display = "block";
+        logoutBtn.style.display = "block";
+        loadComments();
+        resetLogoutTimer();
+      } else {
+        loginSection.style.display = "block";
+        adminFeedbacks.style.display = "none";
+        logoutBtn.style.display = "none";
+        adminFeedbacks.innerHTML = "";
+      }
+    });
+
+    async function loadComments() {
+      adminFeedbacks.innerHTML = "<p><em>Feedback wird geladen…</em></p>";
+      const snapshot = await getDocs(collection(db, "evaluation"));
+      if (snapshot.empty) {
+        adminFeedbacks.innerHTML = "<p>Keine Kommentare gefunden.</p>";
+        return;
+      }
+
+      const ul = document.createElement("ul");
+      let summe = 0;
+      let anzahl = 0;
+      let kommentareGefunden = false;
+
+      snapshot.forEach(docSnap => {
+        const data = docSnap.data();
+        const kommentar = data.kommentar ? data.kommentar.trim() : "";
+        const anzahlKronen = typeof data.sterne === "number" ? data.sterne : 0;
+
+        // Sterne für alle Bewertungen zählen
+        if (anzahlKronen > 0) {
+          summe += anzahlKronen;
+          anzahl++;
+        }
+
+        // Nur Kommentare mit Text anzeigen
+        if (kommentar.length > 0) {
+          kommentareGefunden = true;
+
+          const kronenHTML = Array.from({ length: anzahlKronen }, () =>
+            `<img src="../b/krone-voll.png" alt="Krone" class="krone-icon" />`
+          ).join("");
+
+          const li = document.createElement("li");
+          li.innerHTML = `
+            <div class="sterne">${kronenHTML}</div>
+            <div class="kommentar">${kommentar}</div>
+          `;
+          ul.appendChild(li);
+        }
+      });
+
+      const durchschnitt = anzahl > 0 ? (summe / anzahl).toFixed(1) : "0.0";
+      const durchschnittHTML = Array.from({ length: Math.round(durchschnitt) }, () =>
+        `<img src="../b/krone-voll.png" alt="Krone" class="krone-icon" />`
+      ).join("");
+
+      let resultHTML = `<p>Durchschnittliche Bewertung: ${durchschnittHTML} (${anzahl} Stimmen)</p>`;
+
+      if (kommentareGefunden) {
+        resultHTML += "";
+        adminFeedbacks.innerHTML = resultHTML;
+        adminFeedbacks.appendChild(ul);
+      } else {
+        resultHTML += "<p><i>Keine Kommentare mit Text vorhanden.</i></p>";
+        adminFeedbacks.innerHTML = resultHTML;
+      }
+    }
+
+    logoutBtn.addEventListener("click", () => {
+      doLogout();
+    });
+    
+    async function doLogout() {
+      await signOut(auth);
+      localStorage.removeItem("loggedInUser");
+    }
+
+    ["click", "mousemove", "keydown", "scroll", "touchstart"].forEach(evt => {
+      window.addEventListener(evt, resetLogoutTimer);
+    });
+</script>
+
+</body>
+</html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-        <title>Louisenfest DD | Mitmachen</title>
+        <title>Louisenfest DD | neu </title>
         <meta name="author" content="&Eacute;mile Jeremias Ruff"> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link rel="icon" type="image/png" href="../favicon.ico">
@@ -28,8 +28,7 @@
           <div class="bg-2-reg" id="bg2-mobil-reg">
 
           <div class="main-nav">          
-              <p class="toggleTrigger" data-default-open="false" data-display="block">
-              <img src="../b/menu.png" alt="menu">Men&#252;</p>
+              <p class="toggleTrigger" data-default-open="false" data-display="block"><img src="../b/menu.png" alt="menu">Men&#252;</p>
               <ul class="toggleContent">
                   <li><a href="../index.html">Homepage</a></li>
                   <li><a href="programm.html">Programm</a></li>
@@ -47,10 +46,12 @@
             <div class="bg-2" id="bg2-desktop">
 
                 <div class="main-nav">         
-                    <p><img src="../b/menu.png" alt="menu">Men&#252;:</p>
-                    <ul><li><a href="../index.html" style="text-decoration: none;">Homepage</a></li>
-                        <li><a href="programm.html">Programm</a></li>
-                        <li><img class="krone" src="../b/krone.png" alt="Krone"><a href="teilnahme.html">Teilnahme</a></li>
+                    <p class="toggleTrigger" data-default-open="true" data-display="flex">
+                    <img src="../b/menu.png" alt="menu">Men&#252;:</p>
+                    <ul class="toggleContent">
+                        <li><a href="../index.html" style="text-decoration: none;">Homepage</a></li>
+                        <li><img class="krone" src="../b/krone.png" alt="Krone"><a href="programm.html">Programm</a></li>
+                        <li><a href="teilnahme.html">Teilnahme</a></li>
                         <li><a href="verein.html">Verein</a></li>
                     </ul>
                 </div>
@@ -74,37 +75,29 @@
   <main>
   <div class="content-below" id="reg">
 
-    <h1>Teilnahme</h1>
+  <div class="login" autocomplete="off">
+    <h2>Login Louisenfest</h2>
+    <p class="login-text">Hier kannst du dich zur Änderung des Programms einloggen 🔐</p>
 
-    <h2>Anwohnende</h2>
-    <p>Unter folgendem Link findest du die sogenannte Anzeige eines vorübergehnden 
-       Gaststättengewerbes aus besonderem Anlass, gemäß §2 Abs.2 Sächisches 
-       Gaststättengesetz (SächsGastG).</p>
-    <p style="margin-left: 20%;"><a href="https://www.dresden.de/media/pdf/ordnungsamt/vdr_32_505_2_Anzeige_temp_Gastgewerbe.pdf" alt="dresden.de (Externer Link)" class="down-btn">Zum Antrag</a></p>
-    <p>Die PDF sendest du per E-Mail ausgefüllt an folgende E-MailAdresse: 
-       <a href="mailto:gewerbeangelegenheiten-gaststaetten@dresden.de">gewerbeangelegenheiten-gaststaetten@dresden.de</a></p>
+    <br>
+    <div class="login-eingabe">
+      <div> <label for="username">Benutzername:</label>
+            <input type="text" id="username" placeholder="hier fancy shit eintragen" required></div>
 
-    <h2>Standanmeldung</h2>
-    <p>Du möchtest beim Straßenfest mit einem Stand dabei sein? Super – wir freuen 
-       uns auf dich! Egal ob als Privatperson, Verein oder Gewerbetreibende*r: Die 
-       Anmeldung ist zwingend erforderlich, damit wir die Stände fair und sinnvoll 
-       planen können – ganz gleich, ob du Mitglied bist oder nicht. <br><br>
-
-    <b>Anmeldeschluss ist der 07.06.2025.</b>
-       Nach diesem Datum können wir leider keine weiteren Stände mehr berücksichtigen.</p>
-       
-       <br>
-       <a href="Lou_Anmeldeformular.pdf" download class="down-btn">Download Anmeldeformular als PDF (1,4 MB)</a> 
-    
-    <p>Einfach das Formular ausfüllen und per E-Mail an uns zurücksenden – fertig! 
-       Wenn du Fragen hast, melde dich gern jederzeit bei uns – wir helfen dir weiter.</p>
+      <div class="login-pw">  <label for="password">Passwort:</label>
+                              <input type="password" id="password" placeholder="🗝️" required autocomplete="new-password">
+                              <button id="login-button">&#10004;</button></div>
+              
+      <hr size="1" noshade>
+      <div class="login-buttons"><button id="login-button-2">Login</button></div>
+    </div>
+  </div>
 
   </div>
   </main>
 
-
 <!-- Footer -->
-    <form action="https://buttondown.com/api/emails/embed-subscribe/LouOrga"
+    <form action="https://buttondown.com/api/emails/embed-subscribe/Player33             "
           method="post"
           class="sub-form">
       <p>Bleibe immer auf dem neuesten Stand mit unserem kostenlosem Newsletter:</p>   
@@ -131,6 +124,57 @@
                 <li><a href="impressum.html">Impressum</a></li>
             </ul>
     </footer>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, setPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+    apiKey: "AIzaSyBnEnZrko6pqy5Q5ZAYlo3iW30hc1F_oV8",
+    authDomain: "programm-louisenfest.firebaseapp.com",
+    projectId: "programm-louisenfest",
+    storageBucket: "programm-louisenfest.firebasestorage.app",
+    messagingSenderId: "385737458779",
+    appId: "1:385737458779:web:f80e7317d6eb94f446ab7e"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    async function loginUserAndRedirect(username, password) {
+      const emailAsUsername = username + "@example.com";
+      try {
+        await setPersistence(auth, browserSessionPersistence); 
+        const userCredential = await signInWithEmailAndPassword(auth, emailAsUsername, password);
+
+        window.location.href = "t/mitgliederinfo.html"; 
+      } catch (error) {
+        alert("Frage doch den mächtigen Guru (V) - Fehler beim Login: " + error.message);
+      }
+    }
+
+    document.getElementById("login-button").addEventListener("click", () => {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      if (username && password) {
+        loginUserAndRedirect(username, password);
+      } else {
+        alert("B.name + PW erforderlich");
+      }
+    });
+
+    document.getElementById("members-button").addEventListener("click", () => {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      if (username && password) {
+        loginUserAndRedirect(username, password);
+      } else {
+        alert("B.name + PW erforderlich");
+      }
+    });
+  </script>
 
   </body>
 </html>

@@ -71,7 +71,7 @@
         <div class="content-below" id="reg">
             <h1 style="margin-top: 10px">Programm</h1>
             <p class="link-before">Wer spielt wo, wann und was? Hier könnt ihr unser genaues Programm nachlesen.<br>
-            Welche Bühne ist welche? <a href="#buehnen"><u>Hier</u></a> sind alle stages kartegraphiert.</p>
+            Welche Bühne ist welche? <a href="#maps"><u>Hier</u></a> sind alle stages und das außermusikalische Programm kartegraphiert.</p>
 
             <section id="a-park-section">
                 <h2 class="toggleTrigger" data-default-open="true" data-display="block">Bühne A-Park
@@ -103,25 +103,54 @@
                 <div class="toggleContent" id="roh"></div>
             </section>
 
-            <section id="el-cubanito-section">
-                <h2 class="toggleTrigger" data-default-open="false" data-display="block">El-Cubanito-Bühne
-                <img class="toggle-png" src="../b/toggle-up.png" alt="Bild"></h2>
-                <div class="toggleContent" id="el-cubanito"></div>
-            </section>
 
-            <section id="next-five-section">
-                <h2 class="toggleTrigger" data-default-open="false" data-display="block">Nächste 5 Acts 
-                <img class="toggle-png" src="../b/toggle-up.png" alt="Bild"></h2>
-                <div id="next-five-events" class="next-events"></div>
-            </section>
+            <p style="margin-top: 130px; font-size: 20px;" id="maps">Zur Verfügung stehende Kategorien:</p>
 
-            <p id="buehnen">Bühnen</p>
-            <iframe class="map" width="100%" frameborder="0" allowfullscreen allow="geolocation" src="https://umap.openstreetmap.de/de/map/louisenfest-dresden-2025_92999?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true&datalayers=41ad50bd-c459-4f3b-aad0-503903fc4fd5&fullscreenControl=null&editinosmControl=false#17/51.06698/13.75604"></iframe>
-            <p><a href="https://umap.openstreetmap.de/de/map/louisenfest-dresden-2025_92999?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true&datalayers=41ad50bd-c459-4f3b-aad0-503903fc4fd5&fullscreenControl=null&editinosmControl=false#17/51.06698/13.75604">Vollbildanzeige</a></p> </div>
+            <div class="maps">
+              <div><div class="toggleTrigger" data-target="#buehnen" data-default-open="true"><img src="../b/buenen.png" alt="Bühnen">Bühnen</div></div>
+              <div><div class="toggleTrigger" data-target="#kultur" data-default-open="false"><img src="../b/kultur.png" alt="Kultur">Kultur</div></div>
+              <div><div class="toggleTrigger" data-target="#jammjamm" data-default-open="false"><img src="../b/jammjamm.png" alt="JammJamm">JammJamm</div></div>
+              <div><div class="toggleTrigger" data-target="#cocktail" data-default-open="false"><img src="../b/cocktail.png" alt="Cocktail">Cocktails</div></div>
+              <div><div class="toggleTrigger" data-target="#bier" data-default-open="false"><img src="../b/bier.png" alt="Bier">Bier</div></div>
+              <div><div class="toggleTrigger" data-target="#sanitaer" data-default-open="false"><img src="../b/sanitaer.png" alt="Sanitär">Sanitär</div></div>
+            </div>
+
+
+            <div id="buehnen">
+                <img src="../b/buenen.png" alt="Bühnen"><p id="buehnen">Bühnen</p>
+                <iframe style="border: 2.5px solid red;" class="map" width="100%" frameborder="0" allowfullscreen allow="geolocation" src="https://umap.openstreetmap.de/de/map/louisenfest-dresden-2025_92999?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true#18/51.06585/13.75621"></iframe>
+                <p><a href="https://umap.openstreetmap.de/de/map/louisenfest-dresden-2025_92999?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true&datalayers=41ad50bd-c459-4f3b-aad0-503903fc4fd5&fullscreenControl=null&editinosmControl=false#17/51.06698/13.75604">Vollbildanzeige</a></p></div>
+
+            <div id="kultur">
+                <img src="../b/kultur.png" alt="Kultur"><p>Kultur</p>
+                <iframe style="border: 2.5px solid orange;" class="map" width="100%" frameborder="0" allowfullscreen allow="geolocation" src="https://umap.openstreetmap.de/de/map/kultur-louisenfest-dresden-2025-louisenfes_97537?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true#18/51.06585/13.75621"></iframe>
+                <p><a href="https://umap.openstreetmap.de/de/map/kultur-louisenfest-dresden-2025-louisenfestco_97537?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true">Vollbildanzeige</a></p></div>
+
+            <div id="cocktail">
+                <img src="../b/cocktail.png" alt="Cocktail"><p>Cocktailstände</p>
+                <iframe style="border: 2.5px solid green;" class="map" width="100%" frameborder="0" allowfullscreen allow="geolocation" src="https://umap.openstreetmap.de/de/map/cocktail-louisenfest-dresden-2025-louisenfestcom_97536?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true#18/51.06585/13.75621"></iframe>
+                <p><a href="https://umap.openstreetmap.de/de/map/cocktailstande-louisenfest-dresden-2025-louisenfestco_97536?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true">Vollbildanzeige</a></p></div>
+
+            <div id="bier">
+                <img src="../b/bier.png" alt="Bier"><p>Bierstände</p>
+                <iframe style="border: 2.5px solid blue;" class="map" width="100%" frameborder="0" allowfullscreen allow="geolocation" src="https://umap.openstreetmap.de/de/map/bierstande-louisenfest-dresden-2025-louisenfestcom_96863?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true#18/51.06585/13.75621"></iframe>
+                <p><a href="https://umap.openstreetmap.de/de/map/bierstande-louisenfest-dresden-2025-louisenfestco_96863?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true">Vollbildanzeige</a></p></div>
+
+            <div id="jammjamm">
+                <img src="../b/jammjamm.png" alt="JammJamm"><p>JammJamm</p>
+                <iframe style="border: 2.5px solid yellow;" class="map" width="100%" frameborder="0" allowfullscreen allow="geolocation" src="https://umap.openstreetmap.de/de/map/jammjamm-louisenfest-dresden-2025-louisenfestco_96862?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true#18/51.06585/13.75621"></iframe>
+                <p><a href="https://umap.openstreetmap.de/de/map/essenstande-louisenfest-dresden-2025-louisenfestco_96862?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true">Vollbildanzeige</a></p></div>
+
+            <div id="sanitaer">
+                <img src="../b/sanitaer.png" alt="Sanitär"><p>Sanitär</p>
+                <iframe style="border: 2.5px solid purple;" class="map" width="100%" frameborder="0" allowfullscreen allow="geolocation" src="https://umap.openstreetmap.de/de/map/sanitar-louisenfest-dresden-2025-louisenfestcom_96864?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true#18/51.06585/13.75621"></iframe>
+                <p><a href="https://umap.openstreetmap.de/de/map/gewerbe-louisenfest-dresden-2025-louisenfestcom_96864?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true">Vollbildanzeige</a></p></div>
+
+        </div>
     </main>
 
 <!-- Footer -->
-    <form action="https://buttondown.com/api/emails/embed-subscribe/Louisenfest             "
+    <form action="https://buttondown.com/api/emails/embed-subscribe/LouOrga"
           method="post"
           class="sub-form">
       <p>Bleibe immer auf dem neuesten Stand mit unserem kostenlosem Newsletter:</p>   
@@ -167,7 +196,7 @@
 
     function formatTime(ts) {
         const date = typeof ts.toDate === 'function' ? ts.toDate() : new Date(ts);
-        return date.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });    
+        return date.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
     }
 
     function formatDate(ts) {
@@ -228,11 +257,36 @@
                 bandDiv.className = "band";
 
                 const bandLink = document.createElement("a");
-                bandLink.href = act.link;
-                bandLink.textContent = act.band;
-                bandLink.target = "_blank";
-                bandLink.rel = "noopener noreferrer";
-                bandLink.title = `Genre: ${act.info}   |   Externer Link: Instagram`;
+                
+                if (act.info && act.info.trim().toLowerCase().endsWith("popup")) {
+                    bandLink.href = "#";
+                    bandLink.textContent = act.band;
+                    bandLink.style.cursor = "pointer";
+                    bandLink.title = `Popup mit Bandnamen öffnen (interner Link)`;
+
+                    bandLink.addEventListener("click", e => {
+                        e.preventDefault();
+                        const popupName = "popup_" + Date.now();
+                        const popup = window.open(
+                            act.link,
+                            popupName,
+                            "width=400,height=300,scrollbars=yes,resizable=yes"
+                        );
+                        if (!popup) alert(`Popup wurde blockiert. Popups für diese Seite erlauben oder öffnen unter louisenfest.com/t/${act.link}`);
+                    });
+                } else {
+                    bandLink.href = act.link;
+                    bandLink.textContent = act.band;
+                    bandLink.target = "_blank";
+                    bandLink.rel = "noopener noreferrer";
+                    bandLink.title = `Genre: ${act.info}   |   Externer Link: Instagram`;
+
+                        if (act.link.includes("instagram.com")) {
+                            bandLink.title = `Genre: ${act.info}   |   Externer Link: Instagram`;
+                        } else {
+                            bandLink.title = `Genre: ${act.info}   |   Keinen Instagram-Account gefunden`;
+                        }
+                }
 
                 bandDiv.appendChild(bandLink);
                 actDiv.appendChild(timeDiv);
@@ -246,78 +300,14 @@
         container.appendChild(dayContainer);
     }
 
-    async function loadNextFiveEvents() {
-        const stages = ["a-park", "mondpalast", "grubers", "little-creatures", "roh", "el-cubanito"];
-        let events = [];
-
-        for (const stage of stages) {
-            const snapshot = await getDocs(collection(db, stage));
-            snapshot.forEach(doc => {
-                const data = doc.data();
-                events.push({
-                    band: data.band,
-                    start: data.start,
-                    stageName: data.stage || stage,
-                    link: data.link || "#",
-                    info: data.info || " - "
-                });
-            });
-        }
-
-        const now = new Date();
-        events = events
-            .filter(e => {
-                const startDate = typeof e.start.toDate === 'function' ? e.start.toDate() : new Date(e.start);
-                return startDate > now;
-            })
-            .sort((a, b) => {
-                const aStart = typeof a.start.toDate === 'function' ? a.start.toDate() : new Date(a.start);
-                const bStart = typeof b.start.toDate === 'function' ? b.start.toDate() : new Date(b.start);
-                return aStart - bStart;
-            })
-            .slice(0, 5);
-
-        const container = document.getElementById("next-five-events");
-        container.innerHTML = "";
-
-        events.forEach(event => {
-            const eventDiv = document.createElement("div");
-            eventDiv.className = "act";
-
-            const timeDiv = document.createElement("div");
-            timeDiv.className = "time";
-            timeDiv.textContent = `${formatTime(event.start)}`;
-
-            const stageDiv = document.createElement("div");
-            stageDiv.className = "stage";
-            stageDiv.textContent = event.stageName;
-
-            const bandDiv = document.createElement("div");
-            bandDiv.className = "band";
-
-            const bandLink = document.createElement("a");
-            bandLink.href = event.link;
-            bandLink.textContent = event.band;
-            bandLink.target = "_blank";
-            bandLink.rel = "noopener noreferrer";
-            bandLink.title = `Genre: ${event.info}   |   Externer Link: Instagram`;
-
-            bandDiv.appendChild(bandLink);
-            eventDiv.appendChild(timeDiv);
-            eventDiv.appendChild(stageDiv);
-            eventDiv.appendChild(bandDiv);
-            container.appendChild(eventDiv);
-        });
-    }
-
     loadStage("a-park", "a-park");
     loadStage("mondpalast", "mondpalast");
     loadStage("grubers", "grubers");
     loadStage("creatures", "little-creatures");
     loadStage("el-cubanito", "el-cubanito");
     loadStage("roh", "roh");
-    loadNextFiveEvents();
-    </script>
+</script>
+
 
 
 </body>

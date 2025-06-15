@@ -76,14 +76,14 @@
 
   <h1>Feedback</h1>
   <p>Wie hat euch das Louisenfest gefallen? Lasst eine Bewertung da – mit oder 
-     ohne Kommentar. <br>Wir freuen uns über euer Feedback! Die Bewertungen werden wir später veröffentlichen.</p>
+     ohne Kommentar. <br>Wir freuen uns über euer Feedback!</p>
 
   <div class="stars" id="starContainer">
-    <span data-value="1">★</span>
-    <span data-value="2">★</span>
-    <span data-value="3">★</span>
-    <span data-value="4">★</span>
-    <span data-value="5">★</span>
+    <img src="../b/krone-leer.png" data-value="1">
+    <img src="../b/krone-leer.png" data-value="2">
+    <img src="../b/krone-leer.png" data-value="3">
+    <img src="../b/krone-leer.png" data-value="4">
+    <img src="../b/krone-leer.png" data-value="5">
 
     <span class="pfeil">→</span>
     <button id="absendenBtn">Absenden</button>
@@ -102,7 +102,7 @@
   </main>
 
 <!-- Footer -->
-    <form action="https://buttondown.com/api/emails/embed-subscribe/Player33"
+    <form action="https://buttondown.com/api/emails/embed-subscribe/LouOrga"
           method="post"
           class="sub-form">
       <p>Bleibe immer auf dem neuesten Stand mit unserem kostenlosem Newsletter:</p>   
@@ -150,52 +150,30 @@
 
   let bewertung = 0;
 
-  const stars = document.querySelectorAll('#starContainer span');
-  stars.forEach(star => {
-    star.addEventListener('click', () => {
-      bewertung = parseInt(star.dataset.value);
-      stars.forEach(s => s.classList.remove('selected'));
-      for (let i = 0; i < bewertung; i++) {
-        stars[i].classList.add('selected');
-      }
+  const kronen = document.querySelectorAll('#starContainer img');
+
+  kronen.forEach(krone => {
+    krone.addEventListener('click', () => {
+      bewertung = parseInt(krone.getAttribute('data-value'));
+      kronen.forEach(k => {
+        const val = parseInt(k.getAttribute('data-value'));
+        if (val <= bewertung) {
+          k.src = "../b/krone-voll.png";
+        } else {
+          k.src = "../b/krone-leer.png";
+        }
+      });
     });
   });
 
+  // ... Rest deines Codes bleibt unverändert ...
+
   const rechtsextremistischeWoerter = [
-    "hitler",
-    "hakenkreuz",
-    "adolfhitler",
-    "siegheil",
-    "deutschlanderwache",
-    "rotfrontverrecke",
-    "einvolk,einreich,einführer",
-    "rahowa",
-    "whitepower",
-    "zog",
-    "gnls",
-    "heilhitler",
-    "wehrmacht",
-    "reichsbürger",
-    "rechtsradikal",
-    "nationalsozialismus",
-    "jugendschutzgesetzverweigert",
-    "fackelnacht",
-    "fackelmarsch",
-    "holocaustleugner",
-    "judenfrei",
-    "endlösung",
-    "volksverräter",
-    "ausländerfrei",
-    "völkisch",
-    "blutundboden",
-    "reichskristallnacht",
-    "identitärebewegung",
-    "heimatverteidigung"
+    // ... deine Wörterliste ...
   ];
 
   function kommentarFilter(kommentar) {
     const komp = kommentar.toLowerCase().replace(/\s+/g, "");
-
     for (const wort of rechtsextremistischeWoerter) {
       if (komp.includes(wort)) {
         return true;
@@ -211,7 +189,7 @@
     }
 
     if (bewertung < 1 || bewertung > 5) {
-      alert("Bitte gib eine Sternebewertung (1–5) ab.");
+      alert("Bitte gib eine Bewertung mit 1–5 Kronen ab.");
       return;
     }
 
@@ -236,7 +214,7 @@
       localStorage.setItem("bewertetSchon", "true");
       alert("Danke für deine Bewertung!");
       document.getElementById("kommentar").value = "";
-      stars.forEach(s => s.classList.remove("selected"));
+      kronen.forEach(k => k.src = "../b/krone-leer.png");
       bewertung = 0;
       ladeBewertungen();
     } catch (error) {
@@ -277,7 +255,7 @@
     let html = `
       <p>
         <strong>
-          ${durchschnitt} von 5 Sternen (${daten.length} Bewertungen insgesamt)
+          ${durchschnitt} von 5 Kronen (${daten.length} Bewertungen insgesamt)
         </strong>
       </p>
     `;
@@ -286,7 +264,8 @@
     gefilterteDaten
       .sort((a, b) => new Date(b.zeitstempel?.seconds * 1000 || 0) - new Date(a.zeitstempel?.seconds * 1000 || 0))
       .forEach(b => {
-        html += `<li>${"★".repeat(b.sterne)}${"☆".repeat(5 - b.sterne)} – ${b.kommentar || "<em>Kein Kommentar</em>"}</li>`;
+        const kronenHTML = `<span class="kronen-anzeige">${"👑".repeat(b.sterne)}${"⚪".repeat(5 - b.sterne)}</span>`;
+        html += `<li>${kronenHTML} – ${b.kommentar || "<em>Kein Kommentar</em>"}</li>`;
       });
     html += "</ul>";
 
@@ -297,6 +276,9 @@
   document.getElementById("showAll").addEventListener("change", ladeBewertungen);
   ladeBewertungen();
 </script>
+
+
+
 
 </body>
 </html>
