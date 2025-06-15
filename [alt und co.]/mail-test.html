@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>E-Mail Test</title>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+
+<!-- Sichtbares Formular zur Nachrichteneingabe -->
+<form id="user-message-form">
+  <label for="user-message">Nachricht (optional):</label>
+  <textarea id="user-message" name="user-message" rows="4" cols="50" placeholder="Ihre Nachricht..."></textarea>
+  <br>
+  <button type="submit">Weiter</button>
+</form>
+
+<!-- Unsichtbares Formular für EmailJS -->
+<form id="fallback-form" style="display:none;">
+  <input type="text" name="name" value="Fallback-Script">
+  <input type="text" name="title" value="Fallback aktiviert">
+  <input type="text" name="message" id="fallback-message">
+  <input type="text" name="email" value="noreply@example.com">
+  <input type="text" name="time" id="fallback-time">
+</form>
+
+<script>
+  emailjs.init('0clxaJkyxdeteg835'); // Public Key
+
+  const FALLBACK_MODE = true;
+  const FALLBACK_URL = "/fallback.html";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    if (FALLBACK_MODE && !window.location.pathname.endsWith("fallback.html")) {
+      const userForm = document.getElementById("user-message-form");
+
+      userForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const userMessage = document.getElementById("user-message").value;
+        const messageField = document.getElementById("fallback-message");
+        const timeField = document.getElementById("fallback-time");
+
+        // Nachricht zusammenstellen
+        messageField.value = "Fallback aktiviert auf " + window.location.href + 
+          (userMessage ? "\n\nBenutzernachricht:\n" + userMessage : "");
+        timeField.value = new Date().toLocaleString();
+
+        // Mail senden, danach weiterleiten
+        emailjs.sendForm("default_service", "template_29o4mr2", "#fallback-form")
+          .then(() => {
+            console.log("Fallback-E-Mail gesendet.");
+            window.location.replace(FALLBACK_URL);
+          })
+          .catch((error) => {
+            console.warn("Fehler beim Senden:", error);
+            window.location.replace(FALLBACK_URL);
+          });
+      });
+    }
+  });
+</script>
+
+
+</body>
+</html>
