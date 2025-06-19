@@ -1,8 +1,7 @@
 // backup-firebase.js
-import fs from "fs";
-import admin from "firebase-admin";
+const fs = require("fs");
+const admin = require("firebase-admin");
 
-// Service-Account JSON aus GitHub Secret
 const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON);
 
 admin.initializeApp({
