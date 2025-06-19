@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Programm Admin</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 1em;
+      max-width: 800px;
+      margin: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1em;
+    }
+    td, th {
+      border: 1px solid #ccc;
+      padding: 0.5em;
+    }
+    input, select, button {
+      margin: 0.3em 0;
+      padding: 0.4em;
+    }
+    #login-section {
+      max-width: 400px;
+      margin: 2em auto;
+      border: 1px solid #ccc;
+      padding: 1em;
+      border-radius: 6px;
+      background: #f9f9f9;
+    }
+    #login-error {
+      color: red;
+      margin-bottom: 0.5em;
+    }
+    table th:nth-child(2),
+table td:nth-child(2) {
+  width: 150px; /* Oder beliebiger Wert, z.B. 180px */
+  min-width: 150px;
+}
+  </style>
+</head>
+<body>
+  <h1>Programm bearbeiten</h1>
+
+  <div id="login-section">
+    <div id="login-error"></div>
+    <label for="email">Benutzername</label><br />
+    <input type="text" id="email" placeholder="Benutzername" autocomplete="username" />
+    <br />
+    <label for="password">Passwort</label><br />
+    <input type="password" id="password" placeholder="Passwort" autocomplete="current-password" />
+    <br />
+    <button id="btnLogin">Einloggen</button>
+  </div>
+
+  <div id="admin-section" style="display:none;">
+    <button id="btnLogout" style="float:right;">Ausloggen</button>
+
+    <h2>Bühne wählen</h2>
+    <select id="stageSelect">
+      <option value="a-park">A-Park</option>
+      <option value="mondpalast">Mondpalast</option>
+      <option value="grubers">Grubers</option>
+      <option value="lobo">Lobo</option>
+      <option value="roh">Roh</option>
+      <option value="talstrasse">Talstraße</option>
+    </select>
+    <button id="btnLoad">Laden</button>
+
+    <h3>Acts</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Band</th>
+          <th>Start</th>
+          <th>Info</th>
+          <th>Link</th>
+          <th>Aktion</th>
+        </tr>
+      </thead>
+      <tbody id="actsTable"></tbody>
+    </table>
+
+    <h3>Neuen Act hinzufügen</h3>
+    <input id="newBand" placeholder="Bandname" />
+    <input id="newStart" type="datetime-local" />
+    <input id="newInfo" placeholder="Info / Genre" />
+    <input id="newLink" placeholder="Link (optional)" />
+    <button id="btnAdd">Hinzufügen</button>
+  </div>
+
+<script type="module">
+// Vollständiges JS-Script mit Anzeige von "T{Tag} H{hh:mm}" für start,
+// sowie Anzeige von info/link-Werten, und Live-Synchronisierung
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+import {
+  getFirestore, collection, getDocs, doc, updateDoc, deleteDoc, setDoc
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+import {
+  getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut,
+  setPersistence, browserLocalPersistence
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBnEnZrko6pqy5Q5ZAYlo3iW30hc1F_oV8",
+  authDomain: "programm-louisenfest.firebaseapp.com",
+  projectId: "programm-louisenfest",
+  storageBucket: "programm-louisenfest.appspot.com",
+  messagingSenderId: "385737458779",
+  appId: "1:385737458779:web:f80e7317d6eb94f446ab7e"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth();
+
+const loginButton = document.getElementById("btnLogin");
+const logoutButton = document.getElementById("btnLogout");
+const loginError = document.getElementById("login-error");
+const loginSection = document.getElementById("login-section");
+const adminSection = document.getElementById("admin-section");
+
+setPersistence(auth, browserLocalPersistence);
+
+loginButton.addEventListener("click", () => {
+  loginError.textContent = "";
+  let email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+  if (!email || !password) {
+    loginError.textContent = "Benutzername und Passwort erforderlich.";
+    return;
+  }
+  if (!email.includes("@")) email += "@example.com";
+
+  signInWithEmailAndPassword(auth, email, password)
+    .then(() => {})
+    .catch(e => loginError.textContent = "Login fehlgeschlagen: " + e.message);
+});
+
+onAuthStateChanged(auth, (user) => {
+  if (user && user.uid === "DvPg57uN9iW2JcbtzbQH7qKd8172") {
+    loginSection.style.display = "none";
+    adminSection.style.display = "block";
+    loadProgrammData();
+  } else {
+    loginSection.style.display = "block";
+    adminSection.style.display = "none";
+  }
+});
+
+logoutButton.addEventListener("click", () => signOut(auth));
+
+document.getElementById("btnLoad").addEventListener("click", loadProgrammData);
+
+async function loadProgrammData() {
+  const stage = document.getElementById("stageSelect").value;
+  const actsTable = document.getElementById("actsTable");
+  actsTable.innerHTML = "<tr><td colspan='5'>Lade Daten…</td></tr>";
+
+  try {
+    const colRef = collection(db, stage);
+    const snapshot = await getDocs(colRef);
+    const docs = snapshot.docs.sort((a, b) => {
+      const aStart = a.data().start?.toDate ? a.data().start.toDate() : new Date(a.data().start);
+      const bStart = b.data().start?.toDate ? b.data().start.toDate() : new Date(b.data().start);
+      return aStart - bStart;
+    });
+
+    actsTable.innerHTML = "";
+    for (const docSnap of docs) {
+      const data = docSnap.data();
+      const date = data.start?.toDate ? data.start.toDate() : new Date(data.start || Date.now());
+      const tTag = "T" + String(date.getDate()).padStart(2, "0");
+      const hZeit = date.toLocaleTimeString("de-DE", { hour: '2-digit', minute: '2-digit' }) + " Uhr";
+      const tHFormat = `${tTag} ${hZeit}`;
+
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td contenteditable="true" data-field="band" data-id="${docSnap.id}">${data.band || ""}</td>
+        <td contenteditable="true" data-field="start" data-id="${docSnap.id}" data-raw="${date.toISOString()}">${tHFormat}</td>
+        <td contenteditable="true" data-field="info" data-id="${docSnap.id}">${data.info || ""}</td>
+        <td contenteditable="true" data-field="link" data-id="${docSnap.id}">${data.link || ""}</td>
+        <td><button data-id="${docSnap.id}" class="btnDelete">Löschen</button></td>
+      `;
+      actsTable.appendChild(tr);
+    }
+
+    // Events zum Speichern
+    actsTable.querySelectorAll("[contenteditable=true]").forEach(el => {
+      el.addEventListener("blur", async () => {
+        const field = el.dataset.field;
+        const id = el.dataset.id;
+        const value = el.textContent.trim();
+        let update = {};
+
+        if (field === "start" && /^T\d{1,2}\sH\d{2}:\d{2}$/.test(value)) {
+          const [, tTag, hTime] = value.match(/^T(\d{1,2})\sH(\d{2}:\d{2})$/);
+          const [hours, minutes] = hTime.split(":".map(Number));
+          const date = new Date(el.dataset.raw);
+          date.setDate(Number(tTag));
+          date.setHours(hours);
+          date.setMinutes(minutes);
+          update = { start: date };
+        } else {
+          update[field] = value;
+        }
+
+        try {
+          await updateDoc(doc(db, stage, id), update);
+        } catch (e) {
+          alert("Fehler beim Speichern: " + e.message);
+        }
+      });
+    });
+
+    // Löschen
+    actsTable.querySelectorAll(".btnDelete").forEach(btn => {
+      btn.addEventListener("click", async () => {
+        if (confirm("Wirklich löschen?")) {
+          await deleteDoc(doc(db, stage, btn.dataset.id));
+          loadProgrammData();
+        }
+      });
+    });
+
+  } catch (e) {
+    actsTable.innerHTML = `<tr><td colspan="5" style="color:red;">Fehler beim Laden: ${e.message}</td></tr>`;
+  }
+}
+</script>
+
+
+</body>
+</html>
