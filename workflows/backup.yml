@@ -1,34 +1,12 @@
-name: Firebase Backup
+name: Test Workflow
 
 on:
-  schedule:
-    - cron: "0 */6 * * *"  # alle 6 Stunden
-  workflow_dispatch:
+  push:
+    branches:
+      - main  # oder dein Branch
 
 jobs:
-  backup:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Repo auschecken
-        uses: actions/checkout@v3
-
-      - name: Node.js installieren
-        uses: actions/setup-node@v3
-        with:
-          node-version: "18"
-
-      - name: Firebase Backup Script ausführen
-        env:
-          FIREBASE_SERVICE_ACCOUNT_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}
-        run: |
-          npm install firebase-admin
-          node backup-firebase.js
-
-      - name: Backup committen & pushen
-        run: |
-          git config --local user.name "github-actions"
-          git config --local user.email "actions@github.com"
-          git add backup.json
-          git commit -m "Auto Backup Firebase $(date -u +'%Y-%m-%dT%H:%M:%SZ')" || echo "No changes"
-          git push
+      - run: echo "Hello from workflow"
