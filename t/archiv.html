@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Archiv Galerie</title>
+  <style>
+    img { max-width: 200px; margin: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Archiv Galerie</h1>
+  <div id="bilder"></div>
+
+  <script>
+    const projectId = 'a9p7mozn';
+    const dataset = 'production';
+
+    fetch(`https://${projectId}.api.sanity.io/v2021-06-07/data/query/${dataset}?query=*[_type=="sanity.imageAsset"]{url}`)
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById('bilder');
+        data.result.forEach(bild => {
+          const img = document.createElement('img');
+          img.src = bild.url;
+          container.appendChild(img);
+        });
+      });
+  </script>
+</body>
+</html>
