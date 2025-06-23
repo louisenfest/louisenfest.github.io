@@ -33,10 +33,12 @@ exports.handler = async function(event) {
       statusCode: 200,
       body: JSON.stringify(uploadRes.data),
     };
-  } catch (err) {
-    return {
-      statusCode: 500,
-      body: 'Fehler beim Upload',
-    };
   }
+  catch (err) {
+  return {
+    statusCode: 500,
+    body: JSON.stringify({ message: 'Fehler beim Upload', error: err.message }),
+  };
+}
+
 };
