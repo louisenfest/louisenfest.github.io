@@ -1,0 +1,6 @@
+[build]
+  publish = "t"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
