@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Louisenfest Archiv 2025</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📷</text></svg>">
   <style>
     body { font-family: sans-serif; background: #f4f4f4; margin: 0; padding: 2rem; }
     h1 { text-align: center; }
@@ -17,8 +19,11 @@
 
   <script>
     const gallerySources = [
-      'https://louisenfest.github.io/lou-archiv-2025/public/gallery.json'
-      // Weitere gallery.json-Links hier ergänzen
+      // Hauptarchiv auf Subdomain (CORS-sicher!)
+      'https://archiv.louisenfest.com/public/gallery.json'
+
+      // Beispiel für weiteres Archiv-Repo:
+      // 'https://archiv2.louisenfest.com/public/gallery.json'
     ];
 
     async function loadImages() {
@@ -27,24 +32,28 @@
       for (const src of gallerySources) {
         try {
           const res = await fetch(src);
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
           const json = await res.json();
-          allImages.push(...json.images);
+          allImages.push(...(json.images || []));
         } catch (e) {
-          console.error('Fehler bei', src, e);
+          console.error('Fehler beim Laden:', src, e);
         }
       }
 
       const gallery = document.getElementById('gallery');
       gallery.innerHTML = '';
+
+      if (allImages.length === 0) {
+        gallery.textContent = 'Keine Bilder gefunden.';
+        return;
+      }
+
       allImages.forEach(url => {
         const img = document.createElement('img');
         img.src = url;
+        img.alt = 'Archivbild';
         gallery.appendChild(img);
       });
-
-      if (allImages.length === 0) {
-        gallery.innerHTML = 'Keine Bilder gefunden.';
-      }
     }
 
     loadImages();
