@@ -17,7 +17,31 @@
   <h1>📸 Louisenfest Archiv 2025</h1>
   <div id="gallery">Lade Bilder…</div>
 
+  <div id="lightbox" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:9999;">
+    <img id="lightbox-img" style="max-width:90%; max-height:90%; box-shadow:0 0 20px #000; border-radius:12px;">
+  </div>
+
   <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    allImages.forEach(url => {
+      const img = document.createElement('img');
+      img.src = url;
+      img.alt = 'Archivbild';
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', () => {
+        lightboxImg.src = url;
+        lightbox.style.display = 'flex';
+      });
+      gallery.appendChild(img);
+    });
+
+    lightbox.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+      lightboxImg.src = '';
+    });
+
     const gallerySources = [
       // Hauptarchiv auf Subdomain (CORS-sicher!)
       'https://archiv.louisenfest.com/public/gallery.json'
