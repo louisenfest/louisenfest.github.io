@@ -21,9 +21,33 @@
     <img id="lightbox-img" style="max-width:90%; max-height:90%; box-shadow:0 0 20px #000; border-radius:12px;">
   </div>
 
-  <script>
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
+<script>
+  const gallerySources = [
+    // Hauptarchiv auf Subdomain (CORS-sicher!)
+    'https://archiv.louisenfest.com/public/gallery.json'
+  ];
+
+  async function loadImages() {
+    const allImages = [];
+
+    for (const src of gallerySources) {
+      try {
+        const res = await fetch(src);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const json = await res.json();
+        allImages.push(...(json.images || []));
+      } catch (e) {
+        console.error('Fehler beim Laden:', src, e);
+      }
+    }
+
+    const gallery = document.getElementById('gallery');
+    gallery.innerHTML = '';
+
+    if (allImages.length === 0) {
+      gallery.textContent = 'Keine Bilder gefunden.';
+      return;
+    }
 
     allImages.forEach(url => {
       const img = document.createElement('img');
@@ -36,51 +60,18 @@
       });
       gallery.appendChild(img);
     });
+  }
 
-    lightbox.addEventListener('click', () => {
-      lightbox.style.display = 'none';
-      lightboxImg.src = '';
-    });
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
 
-    const gallerySources = [
-      // Hauptarchiv auf Subdomain (CORS-sicher!)
-      'https://archiv.louisenfest.com/public/gallery.json'
+  lightbox.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+    lightboxImg.src = '';
+  });
 
-      // Beispiel für weiteres Archiv-Repo:
-      // 'https://archiv2.louisenfest.com/public/gallery.json'
-    ];
+  loadImages();
+</script>
 
-    async function loadImages() {
-      const allImages = [];
-
-      for (const src of gallerySources) {
-        try {
-          const res = await fetch(src);
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          const json = await res.json();
-          allImages.push(...(json.images || []));
-        } catch (e) {
-          console.error('Fehler beim Laden:', src, e);
-        }
-      }
-
-      const gallery = document.getElementById('gallery');
-      gallery.innerHTML = '';
-
-      if (allImages.length === 0) {
-        gallery.textContent = 'Keine Bilder gefunden.';
-        return;
-      }
-
-      allImages.forEach(url => {
-        const img = document.createElement('img');
-        img.src = url;
-        img.alt = 'Archivbild';
-        gallery.appendChild(img);
-      });
-    }
-
-    loadImages();
-  </script>
 </body>
 </html>
