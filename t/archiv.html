@@ -1,30 +1,53 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <title>Archiv Galerie</title>
+  <meta charset="UTF-8">
+  <title>Louisenfest Archiv 2025</title>
   <style>
-    img { max-width: 200px; margin: 10px; }
+    body { font-family: sans-serif; background: #f4f4f4; margin: 0; padding: 2rem; }
+    h1 { text-align: center; }
+    #gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 2rem; }
+    img { width: 200px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); transition: 0.2s; }
+    img:hover { transform: scale(1.05); }
   </style>
 </head>
 <body>
-  <h1>Archiv Galerie</h1>
-  <div id="bilder"></div>
+  <h1>📸 Louisenfest Archiv 2025</h1>
+  <div id="gallery">Lade Bilder…</div>
 
   <script>
-    const projectId = 'a9p7mozn';
-    const dataset = 'production';
+    const gallerySources = [
+      'https://louisenfest.github.io/lou-archiv-2025/public/gallery.json'
+      // Weitere gallery.json-Links hier ergänzen
+    ];
 
-    fetch(`https://${projectId}.api.sanity.io/v2021-06-07/data/query/${dataset}?query=*[_type=="sanity.imageAsset"]{url}`)
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById('bilder');
-        data.result.forEach(bild => {
-          const img = document.createElement('img');
-          img.src = bild.url;
-          container.appendChild(img);
-        });
+    async function loadImages() {
+      const allImages = [];
+
+      for (const src of gallerySources) {
+        try {
+          const res = await fetch(src);
+          const json = await res.json();
+          allImages.push(...json.images);
+        } catch (e) {
+          console.error('Fehler bei', src, e);
+        }
+      }
+
+      const gallery = document.getElementById('gallery');
+      gallery.innerHTML = '';
+      allImages.forEach(url => {
+        const img = document.createElement('img');
+        img.src = url;
+        gallery.appendChild(img);
       });
+
+      if (allImages.length === 0) {
+        gallery.innerHTML = 'Keine Bilder gefunden.';
+      }
+    }
+
+    loadImages();
   </script>
 </body>
 </html>
