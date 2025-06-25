@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link rel="icon" type="image/png" href="../favicon.ico">
 
-        <link rel="stylesheet" href="../stylesheet.css?v=2506-2" type="text/css">
+        <link rel="stylesheet" href="../stylesheet.css?v=2506-3" type="text/css">
         <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
@@ -79,6 +79,7 @@
     <button id="prev">&#10094;</button>
     <img id="lightbox-img">
     <button id="next">&#10095;</button>
+    <img id="slideshow-icon" src="../b/play.svg" alt="Slideshow starten" />
   </div>
 
 
@@ -126,6 +127,40 @@ let currentIndex = 0;
 const gallery = document.getElementById('gallery');
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
+
+let slideshowInterval = null;
+const slideshowIcon = document.getElementById('slideshow-icon');
+
+function toggleSlideshow() {
+  if (!slideshowInterval) {
+    // Start Slideshow
+    slideshowInterval = setInterval(() => {
+      showImage(currentIndex + 1);
+    }, 3000);
+    slideshowIcon.src = '../b/pause.svg';
+    slideshowIcon.alt = 'Pause';
+  } else {
+    // Stop Slideshow
+    clearInterval(slideshowInterval);
+    slideshowInterval = null;
+    slideshowIcon.src = '../b/play.svg';
+    slideshowIcon.alt = 'Slideshow starten';
+  }
+}
+
+slideshowIcon.addEventListener('click', (e) => {
+  e.stopPropagation();
+  toggleSlideshow();
+});
+
+lightbox.addEventListener('click', () => {
+  if (slideshowInterval) {
+    clearInterval(slideshowInterval);
+    slideshowInterval = null;
+    slideshowIcon.src = '../b/play.svg';
+    slideshowIcon.alt = 'Slideshow starten';
+  }
+});
 
 function showImage(index) {
   if (index < 0) index = allImages.length - 1;
@@ -184,6 +219,8 @@ document.getElementById('next').addEventListener('click', (e) => {
 
 loadImages();
 </script>
+
+
 
 </body>
 </html>

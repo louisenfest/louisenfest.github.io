@@ -155,6 +155,21 @@ h2::before {
     margin-top: 30px;
 }
 
+#slideshow-icon {
+  position: absolute;
+  bottom: 40px;
+  left: 90%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+#slideshow-icon:hover {
+  transform: translateX(-50%) scale(1.2);
+}
+
 #gallery {
   column-count: 2;
   column-gap: 16px;
@@ -917,6 +932,10 @@ section h2::after {
 
     #prev {
         bottom: 275px;
+    }
+
+    #slideshow-icon {
+      left: 95%;
     }
 
     .pfeil {
