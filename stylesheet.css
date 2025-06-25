@@ -155,6 +155,58 @@ h2::before {
     margin-top: 30px;
 }
 
+#gallery {
+    column-count: 2;
+    column-gap: 12px;
+}
+
+#gallery img {
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 12px;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+#lightbox {
+    display: none; 
+    position: fixed; 
+    inset: 0; 
+    background: rgba(0,0,0,0.8); 
+    justify-content: center; 
+    align-items: center; 
+    z-index: 9999;
+}
+  
+#lightbox-img {
+    width: 90%; 
+    height: auto; 
+    box-shadow: 0 0 20px #000; 
+    border-radius:0px;
+}
+
+#next {
+    position: absolute; 
+    top: 700px;
+    right: 20px; 
+    font-size: 2rem; 
+    background: none; 
+    border: none; 
+    color: white; 
+    cursor: pointer;
+}
+
+#prev {
+    position: absolute; 
+    bottom: 750px;
+    left: 20px; 
+    font-size: 2rem; 
+    background:none; 
+    border:none; 
+    color:white; 
+    cursor:pointer;
+}
+
 /* Karten */
     .map {
         border-radius: 10px;
@@ -695,7 +747,7 @@ section h2::after {
 }
 
 /* ================
-    Kopf Homepage
+ Kopf Homepage
    ================ */
 .bg-1 {
     position: fixed;
@@ -851,6 +903,23 @@ section h2::after {
         max-width: 18px;
     }
 
+    #lightbox-img {
+        width: auto; 
+        height: 90%; 
+    }
+
+    #gallery {
+      column-count: 4;
+    }
+
+    #next {
+        top: 700px;
+    }
+
+    #prev {
+        bottom: 0px;
+    }
+
     .pfeil {
         display: inline-block;
         font-size: 2em;
@@ -873,6 +942,36 @@ section h2::after {
 
     #adminFeedbacks p {
         margin-top: -30px;
+    }
+
+
+    .dati-h1-m, .dati-start-3 {
+        display: none;
+    }
+
+    .dati-h1-dp, .dati-start-2 {
+        display: block;
+    }
+
+    .horizontale-linie {
+        margin-top: 80px;
+    }
+
+    .footer-dp {
+        display: block;
+    }
+
+    .footer-m {
+        display: none;
+    }
+
+    .sub-form {
+        margin-top: 300px;
+        max-width: 30%;
+    }
+
+    .sub-form input:nth-of-type(3) {
+        margin-top: 0px;
     }
 
 /* Programm */
@@ -903,37 +1002,7 @@ section h2::after {
     #next-five-events .time {
         max-width: 5%;
     }
-/**/
-
-    .dati-h1-m, .dati-start-3 {
-        display: none;
-    }
-
-    .dati-h1-dp, .dati-start-2 {
-        display: block;
-    }
-
-    .horizontale-linie {
-        margin-top: 80px;
-    }
-
-    .footer-dp {
-        display: block;
-    }
-
-    .footer-m {
-        display: none;
-    }
-
-    .sub-form {
-        margin-top: 300px;
-        max-width: 30%;
-    }
-
-    .sub-form input:nth-of-type(3) {
-        margin-top: 0px;
-    }
-    
+/**/ 
 
 /* Header */
     .bg-2-section-reg .bg-2 {
@@ -953,11 +1022,7 @@ section h2::after {
     .bg-2-section-reg img {
         height: 20px; 
         width: auto;
-    }
-
-    .bg-2-section-reg .main-nav p {
-        padding-bottom: 10px;
-    }    
+    }   
 
 /**/    
     .bg-2-section-reg .bg-2 .main-nav {
@@ -980,11 +1045,12 @@ section h2::after {
     .bg-2 .main-nav ul {
         display: flex;
         flex-direction: row;
-        margin-left: 20px;
+        margin-left: 0px;
+        padding-left: 0px;
         margin-top: 10px; 
-        margin-bottom: 0px;
         border-left: 0px solid lightgrey;   
-        text-decoration: underline;     
+        text-decoration: underline; 
+        padding-bottom: 10px;    
     }
 
     .bg-2-section-reg .bg-2-grundinfo table {
@@ -1092,7 +1158,7 @@ section h2::after {
         position: relative;
     }
 
-    .krone, .krone-verein, .krone-impressum, .krone-kontakt {
+    .krone, .krone-verein, .krone-impressum, .krone-kontakt, .krone-archiv {
         position: absolute;
         top: -13px;
         left: 30%;
@@ -1117,6 +1183,11 @@ section h2::after {
         left: 115%;
         display: block;
     }     
+
+    .krone-archiv {
+        left: 20%;
+        display: block;
+    }
 }
 
 
