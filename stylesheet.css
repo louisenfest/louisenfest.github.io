@@ -156,14 +156,14 @@ h2::before {
 }
 
 #gallery {
-  column-count: 3;
+  column-count: 2;
   column-gap: 16px;
 }
 
 #gallery img {
   width: 100%;
   margin-bottom: 16px;
-  border-radius: 8px;
+  border-radius: 5px;
   cursor: pointer;
   transition: transform 0.3s;
 }
