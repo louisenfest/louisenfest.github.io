@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link rel="icon" type="image/png" href="../favicon.ico">
 
-        <link rel="stylesheet" href="../stylesheet.css?v=2506" type="text/css">
+        <link rel="stylesheet" href="../stylesheet.css?v=2506-2" type="text/css">
         <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
@@ -73,8 +73,6 @@
   <div class="content-below" id="reg">
 
   <h1>Archiv</h1>
-  <p>Hier finden sich in den nächsten paar Wochen sammelnd Eindrücke vom Fest der 
-     letzten paar Jahre.</p>
   <div id="gallery">Lade Bilder…</div>
 
   <div id="lightbox">
@@ -118,79 +116,74 @@
     </footer>
 
 <script>
-  const gallerySources = [
-    'https://archiv.louisenfest.com/public/gallery.json'
-  ];
+const gallerySources = [
+  'https://archiv.louisenfest.com/public/gallery.json'
+];
 
-  const styleClasses = ['hochformat', 'querformat', 'gross', 'mini', 'standard'];
-  const getRandomClass = () => styleClasses[Math.floor(Math.random() * styleClasses.length)];
+let allImages = [];
+let currentIndex = 0;
 
-  let allImages = [];
-  let currentIndex = 0;
+const gallery = document.getElementById('gallery');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
 
-  const gallery = document.getElementById('gallery');
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
+function showImage(index) {
+  if (index < 0) index = allImages.length - 1;
+  if (index >= allImages.length) index = 0;
+  currentIndex = index;
+  lightboxImg.src = allImages[currentIndex];
+  lightbox.style.display = 'flex';
+}
 
-  function showImage(index) {
-    if (index < 0) index = allImages.length - 1;
-    if (index >= allImages.length) index = 0;
-    currentIndex = index;
-    lightboxImg.src = allImages[currentIndex];
-    lightbox.style.display = 'flex';
+async function loadImages() {
+  allImages = [];
+
+  for (const src of gallerySources) {
+    try {
+      const res = await fetch(src);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const json = await res.json();
+      allImages.push(...(json.images || []));
+    } catch (e) {
+      console.error('Fehler beim Laden:', src, e);
+    }
   }
 
-  async function loadImages() {
-    allImages = [];
+  gallery.innerHTML = '';
 
-    for (const src of gallerySources) {
-      try {
-        const res = await fetch(src);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const json = await res.json();
-        allImages.push(...(json.images || []));
-      } catch (e) {
-        console.error('Fehler beim Laden:', src, e);
-      }
-    }
-
-    gallery.innerHTML = '';
-
-    if (allImages.length === 0) {
-      gallery.textContent = 'Keine Bilder gefunden.';
-      return;
-    }
-
-    allImages.forEach((url, index) => {
-      const img = document.createElement("img");
-      img.src = url;
-      img.alt = "Archivbild";
-
-      img.addEventListener('click', () => showImage(index));
-      gallery.appendChild(img);
-    });
-
+  if (allImages.length === 0) {
+    gallery.textContent = 'Keine Bilder gefunden.';
+    return;
   }
 
-  lightbox.addEventListener('click', () => {
-    lightbox.style.display = 'none';
-    lightboxImg.src = '';
+  allImages.forEach((url, index) => {
+    const img = document.createElement("img");
+    img.src = url;
+    img.alt = "Archivbild";
+    img.style.height = `${100 + Math.random() * 150}px`;
+    img.style.objectFit = "cover";
+    img.addEventListener('click', () => showImage(index));
+    gallery.appendChild(img);
   });
+}
 
-  document.getElementById('prev').addEventListener('click', (e) => {
-    e.stopPropagation();
-    showImage(currentIndex - 1);
-  });
+lightbox.addEventListener('click', () => {
+  lightbox.style.display = 'none';
+  lightboxImg.src = '';
+});
 
-  document.getElementById('next').addEventListener('click', (e) => {
-    e.stopPropagation();
-    showImage(currentIndex + 1);
-  });
+document.getElementById('prev').addEventListener('click', (e) => {
+  e.stopPropagation();
+  showImage(currentIndex - 1);
+});
 
-  loadImages();
+document.getElementById('next').addEventListener('click', (e) => {
+  e.stopPropagation();
+  showImage(currentIndex + 1);
+});
+
+loadImages();
 </script>
-
-
 
 </body>
 </html>
