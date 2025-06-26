@@ -18,7 +18,6 @@
 
         <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
         <script src="../script.js"></script>
-         
 </head>
 <body>
   <div class="bg-1"></div>
@@ -83,7 +82,6 @@
   </div>
 
 
-
   </div>
   </main>
 
@@ -133,14 +131,12 @@ const slideshowIcon = document.getElementById('slideshow-icon');
 
 function toggleSlideshow() {
   if (!slideshowInterval) {
-    // Start Slideshow
     slideshowInterval = setInterval(() => {
       showImage(currentIndex + 1);
     }, 5000);
     slideshowIcon.src = '../b/pause.svg';
     slideshowIcon.alt = 'Pause';
   } else {
-    // Stop Slideshow
     clearInterval(slideshowInterval);
     slideshowInterval = null;
     slideshowIcon.src = '../b/play.svg';
