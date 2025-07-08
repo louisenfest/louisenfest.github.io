@@ -71,8 +71,16 @@
   <main>
   <div class="content-below" id="reg">
 
+
   <h1>Archiv</h1>
-  <p style="background-color: rgba(255, 0, 0, 0.2); border-radius: 5px; padding: 10px; border: 1px dashed white;">Wegen technischen Umbauten kann es momentan zu Störungen im Archiv kommen. Wir bitten um Entschuldigung.</p>
+
+  <div id="year-selector">
+    <label for="year">Jahr wählen:</label>
+    <select id="year">
+      <option value="2025" selected>2025</option>
+<--  <option value="2024">2024</option>
+      <option value="2023">2023</option> -->
+    </select></div>
   <div id="gallery">Lade Bilder…</div>
 
   <div id="lightbox">
@@ -116,107 +124,100 @@
     </footer>
 
 <script>
-const gallerySources = [
-  'https://archiv.louisenfest.com/public/gallery.json'
-];
+    const gallery = document.getElementById('gallery');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const slideshowIcon = document.getElementById('slideshow-icon');
+    const yearSelector = document.getElementById('year');
+    let allImages = [], currentIndex = 0, slideshowInterval = null;
 
-let allImages = [];
-let currentIndex = 0;
-
-const gallery = document.getElementById('gallery');
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-
-let slideshowInterval = null;
-const slideshowIcon = document.getElementById('slideshow-icon');
-
-function toggleSlideshow() {
-  if (!slideshowInterval) {
-    slideshowInterval = setInterval(() => {
-      showImage(currentIndex + 1);
-    }, 5000);
-    slideshowIcon.src = '../b/pause.svg';
-    slideshowIcon.alt = 'Pause';
-  } else {
-    clearInterval(slideshowInterval);
-    slideshowInterval = null;
-    slideshowIcon.src = '../b/play.svg';
-    slideshowIcon.alt = 'Slideshow starten';
-  }
-}
-
-slideshowIcon.addEventListener('click', (e) => {
-  e.stopPropagation();
-  toggleSlideshow();
-});
-
-lightbox.addEventListener('click', () => {
-  if (slideshowInterval) {
-    clearInterval(slideshowInterval);
-    slideshowInterval = null;
-    slideshowIcon.src = '../b/play.svg';
-    slideshowIcon.alt = 'Slideshow starten';
-  }
-});
-
-function showImage(index) {
-  if (index < 0) index = allImages.length - 1;
-  if (index >= allImages.length) index = 0;
-  currentIndex = index;
-  lightboxImg.src = allImages[currentIndex];
-  lightbox.style.display = 'flex';
-}
-
-async function loadImages() {
-  allImages = [];
-
-  for (const src of gallerySources) {
-    try {
-      const res = await fetch(src);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const json = await res.json();
-      allImages.push(...(json.images || []));
-    } catch (e) {
-      console.error('Fehler beim Laden:', src, e);
+    function getGalleryUrl(year) {
+      return `https://archiv-${year}.louisenfest.com/public/gallery.json`;
     }
-  }
 
-  gallery.innerHTML = '';
+    function toggleSlideshow() {
+      if (!slideshowInterval) {
+        slideshowInterval = setInterval(() => {
+          showImage(currentIndex + 1);
+        }, 5000);
+        slideshowIcon.src = '../b/pause.svg';
+        slideshowIcon.alt = 'Pause';
+      } else {
+        clearInterval(slideshowInterval);
+        slideshowInterval = null;
+        slideshowIcon.src = '../b/play.svg';
+        slideshowIcon.alt = 'Slideshow starten';
+      }
+    }
 
-  if (allImages.length === 0) {
-    gallery.textContent = 'Keine Bilder gefunden.';
-    return;
-  }
+    slideshowIcon.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleSlideshow();
+    });
 
-  allImages.forEach((url, index) => {
-    const img = document.createElement("img");
-    img.src = url;
-    img.alt = "Archivbild";
-    img.style.height = `${100 + Math.random() * 150}px`;
-    img.style.objectFit = "cover";
-    img.addEventListener('click', () => showImage(index));
-    gallery.appendChild(img);
-  });
-}
+    lightbox.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+      lightboxImg.src = '';
+      clearInterval(slideshowInterval);
+      slideshowInterval = null;
+      slideshowIcon.src = '../b/play.svg';
+      slideshowIcon.alt = 'Slideshow starten';
+    });
 
-lightbox.addEventListener('click', () => {
-  lightbox.style.display = 'none';
-  lightboxImg.src = '';
-});
+    document.getElementById('prev').addEventListener('click', (e) => {
+      e.stopPropagation();
+      showImage(currentIndex - 1);
+    });
 
-document.getElementById('prev').addEventListener('click', (e) => {
-  e.stopPropagation();
-  showImage(currentIndex - 1);
-});
+    document.getElementById('next').addEventListener('click', (e) => {
+      e.stopPropagation();
+      showImage(currentIndex + 1);
+    });
 
-document.getElementById('next').addEventListener('click', (e) => {
-  e.stopPropagation();
-  showImage(currentIndex + 1);
-});
+    function showImage(index) {
+      if (index < 0) index = allImages.length - 1;
+      if (index >= allImages.length) index = 0;
+      currentIndex = index;
+      lightboxImg.src = allImages[currentIndex];
+      lightbox.style.display = 'flex';
+    }
 
-loadImages();
+    async function loadImages(year) {
+      allImages = [];
+      const src = getGalleryUrl(year);
+      gallery.innerHTML = 'Lade Bilder…';
+      try {
+        const res = await fetch(src);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const json = await res.json();
+        allImages.push(...(json.images || []));
+      } catch (e) {
+        console.error('Fehler beim Laden:', src, e);
+        gallery.textContent = 'Fehler beim Laden der Galerie.';
+        return;
+      }
+      gallery.innerHTML = '';
+      if (allImages.length === 0) {
+        gallery.textContent = 'Keine Bilder gefunden.';
+        return;
+      }
+      allImages.forEach((url, index) => {
+        const img = document.createElement("img");
+        img.src = url;
+        img.alt = `Archivbild ${year}`;
+        img.style.height = `${100 + Math.random() * 150}px`;
+        img.style.objectFit = "cover";
+        img.addEventListener('click', () => showImage(index));
+        gallery.appendChild(img);
+      });
+    }
+
+    yearSelector.addEventListener('change', (e) => {
+      loadImages(e.target.value);
+    });
+
+    loadImages(yearSelector.value);
 </script>
-
 
 
 </body>

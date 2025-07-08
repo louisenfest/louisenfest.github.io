@@ -170,6 +170,19 @@ h2::before {
   transform: translateX(-50%) scale(1.2);
 }
 
+#year-selector {
+    margin-bottom: 20px;
+}
+
+#year {
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 0px solid white;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 15px;
+    margin-left: 10px;
+}
+
 #gallery {
   column-count: 2;
   column-gap: 16px;
@@ -761,7 +774,7 @@ section h2::after {
 }
 
 /* ================
- Kopf Homepage
+     Kopf Homepage
    ================ */
 .bg-1 {
     position: fixed;
