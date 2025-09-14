@@ -1,7 +1,7 @@
 // script.js
 
 // Fallback
-const ENABLE_FALLBACK = true;
+const ENABLE_FALLBACK = false;
 
 (function redirectToFallback() {
   if (ENABLE_FALLBACK) {
@@ -116,5 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
 
 
