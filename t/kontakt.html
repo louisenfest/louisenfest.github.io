@@ -1,24 +1,146 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-        <title>Louisenfest DD | Kontakt</title>
-        <meta name="author" content="&Eacute;mile Jeremias Ruff"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <link rel="icon" type="image/png" href="../favicon.ico">
+    <title>Louisenfest DD | Kontakt</title>
+    <meta name="author" content="&Eacute;mile Jeremias Ruff"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" type="image/png" href="../favicon.ico">
 
-        <link rel="stylesheet" href="../stylesheet.css?v=2506" type="text/css">
-        <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../stylesheet.css?v=2506" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 
-        <meta charset="UTF-8">
-        <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
-        <meta http-equiv="Pragma" content="no-cache">
-        <meta http-equiv="Expires" content="0">
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
 
-        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-        <script src="../script.js"></script>
-         
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="../script.js"></script>
+
+    <style>
+        main > p {
+            width: 90%;
+            margin-bottom: 20px;
+        }
+
+        main form {
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            padding: 5px 25px;
+            width: 80%;
+        }
+
+        main form p {
+            font-size: 18px;
+            font-weight: bold;
+            font-family: "Arial";
+        }
+
+        main form span, main > p:nth-of-type(3) {
+            color: grey;
+            margin-bottom: 35px;
+        }
+
+        main form input {
+            width: 50%;
+            margin-right: 10%;
+        }
+
+        main form textarea {
+            width: 95.5%;
+            height: 30vh;
+        }
+
+        main form input, main form textarea {
+            border-radius: 10px;
+            font-size: 15px;
+            padding: 10px;
+            outline: none;
+            border: 1px solid transparent;
+            margin-bottom: 30px;
+        }
+
+        main form input:hover:not(#fileNameField), main form textarea:hover, main form button:hover {
+            border: 1px dashed black;
+        }
+
+        main form input:focus:not(#fileNameField), main form textarea:focus, main form button:focus {
+            border: 1px solid black;
+        }
+
+        main form > div {
+            display: flex;
+            align-items: center;
+        }
+
+        #fileNameField {
+            padding-left: 10px;
+            display: none;
+            caret-color: transparent;
+            margin-right: 50px;
+            cursor: pointer;
+        }
+
+        #fileInput {
+            padding: 5px;
+            border-radius: 8px;
+        }
+
+        #fileInput:hover {
+            cursor: pointer;
+            border: 1px dashed white !important;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        #fileInput::file-selector-button, form button  {
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+            padding: 8px 20px;
+            margin-right: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        main form button {
+            font-size: 15px;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+
+        main form button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px dashed white;
+        }
+
+        main form button:focus {
+            border: 1px solid white;
+        }
+
+        @media (max-width: 768px) {
+            main > p {
+                width: 100%;
+            }
+
+            main form {
+                width: 85%;
+            }
+
+            main form input, main form textarea {
+                width: 90%;
+            }
+
+            main form > div {
+                display: block;
+            }
+
+            #fileNameField {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
   <div class="bg-1"></div>
@@ -40,7 +162,6 @@
         
     </div>
    </header>
-
 
     <header class="header-desktop">
         <div class="bg-2-section-reg">
@@ -75,15 +196,39 @@
   <div class="content-below" id="reg">
 
       <h1>Kontakt</h1>
-      <p class="link-before">Erreichbar sind wir unter der E-Mail-Adresse <a href="mailto:louisenfest@outlook.de">
-         louisenfest@outlook.de</a> und folgendem Kontaktformular. Dieses ist alternativ auch 
-         <a href="https://tally.so/r/wbgrq7"><u>hier</u></a> <img class="extern-svg" src="" alt="">
-         zu erreichen. <br> Das Formular wird von <i>Tally</i> zu Verf&uuml;gung gestellt, einem 
-         externen Dritten. Bitte beachten Sie, dass dieser <b>ebenfalls Zugriff</b> auf die Daten 
-         hast, die Sie uns hier &uuml;bermitteln.</p>
+      <p class="link-before">Erreichbar sind wir unter der E-Mail-Adresse <a href="mailto:louisenfest@outlook.de"
+         title="Mail-Dienst (Externer Link)">louisenfest@outlook.de</a> und folgendem Kontaktformular.</p>
 
-      <iframe class="kon-form" data-tally-src="https://tally.so/embed/wbgrq7?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="656" frameborder="0" marginheight="0" marginwidth="0" title="Kontaktformular Louisenfest"></iframe>
-      <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+    <p>Deine Angaben werden ausschließlich zur Bearbeitung deiner Anfrage verwendet. 
+    Die Übertragung erfolgt über einen externen Dienst (<a title="Github (Externer Link)" 
+    target="_blank" href="https://github.com/web3forms">Web3Forms</a>, open-source), 
+    wodurch eine vollständige Datensicherheit nicht garantiert werden 
+    kann. Bitte übermittle daher keine besonders sensiblen oder vertraulichen 
+    Informationen über dieses Formular.</p>
+    <p>Your data is handled by Web3Forms. Avoid sending highly sensitive info.</p>
+
+    <form action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="04c7a79f-b120-4246-89ec-66007d545b53">
+        <input type="hidden" name="redirect" value="https://louisenfest.com/t/kontakt-erfolg">
+        <input type="hidden" name="ursprung" value="louisenfest.github.io">
+
+        <p>Wie dürfen wir Sie nennen? <span>What may we call you?</span></p>
+        <input type="text" name="name">
+
+        <p>Was ist Ihr Anliegen?* <span>What is your request?*</span></p>
+        <textarea name="message" required></textarea>
+
+        <p>Folgend können Sie uns relevante Dateien zukommen lassen.<br>
+        <span>You can send us relevant files as follows.</span></p>
+        <div><input type="text" name="uploaded_file_name" id="fileNameField" placeholder="Keine Datei ausgewählt" readonly>
+             <input type="file" id="fileInput"></div>
+
+        <p>Wie können wir Sie für Rückfragen erreichen?<br>
+        <span>How can we reach you for further enquiries?</span></p>
+        <input type="text" name="email" style="margin-right: 20%;">
+
+        <button type="submit">Abschicken <span>/ Submit</span></button>
+    </form>
 
   </div>
   </main>
@@ -117,5 +262,46 @@
             </ul>
     </footer>
 
-  </body>
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+const supabase = createClient(
+"https://jgdbrtxptkfvxfovbsix.supabase.co",
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnZGJydHhwdGtmdnhmb3Zic2l4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY3MjIzMjksImV4cCI6MjA3MjI5ODMyOX0.LInNeWLI_Qk1cE1mLyfV6Fq_sZAt5kJkSTWvcpA5dYA"
+);
+
+const fileInput = document.getElementById("fileInput");
+const fileNameField = document.getElementById("fileNameField");
+const fileUrlField = document.getElementById("fileUrlField");
+
+fileInput.addEventListener("change", async () => {
+     const file = fileInput.files[0];
+     if (!file) return;
+
+     const date = new Date().toISOString();
+     const filePath = `${file.name}+${date}`;
+
+     const { error } = await supabase
+     .storage
+     .from("form")
+     .upload(filePath, file);
+
+     if (error) {
+     alert("Upload fehlgeschlagen");
+     console.error(error);
+     return;
+     }
+
+     const { data } = supabase
+     .storage
+     .from("uploads")
+     .getPublicUrl(filePath);
+
+     fileNameField.style.display = "block";
+     fileNameField.value = file.name;
+     fileUrlField.value = data.publicUrl;
+});
+</script>
+
+</body>
 </html>
